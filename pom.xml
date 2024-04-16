@@ -54,6 +54,13 @@
             <version>8.0.30</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>6.4.0</version>
+        </dependency>
+
+
 
     </dependencies>
 

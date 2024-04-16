@@ -1,0 +1,61 @@
+.left-box {
+    -fx-background-color: #ffffff;
+}
+
+.button {
+    -fx-background-color: #ffffff;
+    -fx-font-weight: normal;
+    -fx-font-family: Arial;
+    -fx-font-size: 20;
+}
+
+
+.button:hover {
+    -fx-background-color: #cccccc;
+    -fx-font-weight: bold;
+}
+
+.top-panel {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20;
+    -fx-padding: 1px;
+}
+
+.left-box .button {
+    -fx-alignment: baseline-left;
+    -fx-text-alignment: left;
+}
+
+.main-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-border-width: 1px;
+    -fx-border-color: #000000;
+}
+
+
+.account-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+.account-button .menu-item {
+    -fx-font-size: 14pt;
+}
+
+
+.avatar-image {
+    -fx-background-color: transparent;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-width: 0;
+}
+
+#transparent-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+}
