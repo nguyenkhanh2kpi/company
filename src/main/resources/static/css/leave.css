@@ -1,0 +1,46 @@
+.content-button {
+    -fx-background-color: #5E5DF0;
+    -fx-background-radius: 999px;
+    -fx-box-shadow: #5E5DF0 0 10px 20px -10px;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
+    -fx-font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 8px 18px;
+    -fx-border-width: 0;
+}
+
+.content-button:hover {
+    -fx-box-shadow: #5E5DF0 0 14px 28px -14px;
+    -fx-translate-y: -2px;
+    -fx-background-color: #5E5DF0;
+}
+
+
+.content-input {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-border-width: 1px;
+    -fx-border-color: #000000;
+    -fx-background-radius: 20;
+}
+
+.content-input .text-field {
+    /*-fx-border-color: #000000;*/
+    -fx-border-radius: 20;
+    -fx-font-size: 17;
+    -fx-background-radius: 20;
+}
+
+#textarea {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-border-width: 1px;
+    /*-fx-border-color: #000000;*/
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+}
+#textarea .text-area {
+    -fx-background-color: blue;
+}

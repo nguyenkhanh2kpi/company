@@ -6,6 +6,7 @@ public class LoginService {
 
     public LoginService() {
     }
+
     public boolean authenticateUser(String username, String password) {
         return loginDAO.authenticateUser(username, password);
     }

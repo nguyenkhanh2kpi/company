@@ -19,8 +19,4 @@ public class CustomAlert {
         alert.show();
     }
 
-
-
-
-
 }

@@ -1,13 +1,18 @@
 package com.example.project.core;
 
+import com.example.project.controllers.HomeController;
+import com.example.project.controllers.UserProfileController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class Routes {
-    private Stage stage;
+    private final Stage stage;
+    private final Setup setup = new Setup();
 
     public Routes(Stage stage) {
         this.stage = stage;
@@ -17,7 +22,6 @@ public class Routes {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 854, 503);
-            scene.getStylesheets().add(getClass().getResource("/static/css/login.css").toExternalForm());
             stage.setTitle("Login!");
             stage.setScene(scene);
             stage.show();
@@ -26,36 +30,48 @@ public class Routes {
         }
     }
 
-    public void goToHome() {
+    public void goToHome(Stage prestage, String username) {
+        prestage.close();
+        newWindow("/com/example/project/home-view.fxml", 1110, 710, "Home",
+                (HomeController controller) -> {
+                    setup.setUpHomeController(controller, username);
+                });
+    }
+
+    public void goToUserProfile(String username) {
+        newWindow("/com/example/project/user-profile-view.fxml", 638, 540, "User Profile",
+                (UserProfileController controller) -> {
+                    setup.setUpUserProfileController(controller,username);
+                });
+    }
+
+    public void goToProject() {
+        newWindow("/com/example/project/project-view.fxml", 638, 440, "Project", null);
+    }
+
+    public void goToLeaveRequest() {
+        newWindow("/com/example/project/Leave-view.fxml", 378, 544, "Leave Request", null);
+    }
+
+    public void goToTask() {
+        newWindow("/com/example/project/task-view.fxml", 918, 540, "Task", null);
+    }
+
+
+    public <T> void newWindow(String resource, Integer w, Integer h, String title, ControllerSetUp<T> setup) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/home-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1110, 710);
-            stage.setTitle("Home");
-            stage.setScene(scene);
-            stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
+            Stage newStage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), w, h);
+            newStage.setTitle(title);
+            newStage.setScene(scene);
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            T controller = fxmlLoader.getController();
+            setup.setup(controller);
+            newStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    // chuyển đến trang home : truyền vào Stage mới và Stage hiện tại
-    // chưa hoàn thiện sẽ bổ sung thêm các thuộc tính để xác định role,data ....
-    public void goToMain(Stage prestage, String username) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/main-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1060, 600);
-            scene.getStylesheets().add(getClass().getResource("/static/css/main.css").toExternalForm());
-            stage.setTitle("Home");
-            stage.setScene(scene);
-            prestage.close();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-
-
 
 }

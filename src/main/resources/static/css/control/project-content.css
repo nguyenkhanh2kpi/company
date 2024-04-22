@@ -1,0 +1,13 @@
+.project-pane-item {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 20;
+    -fx-border-width: 1px;
+    -fx-border-color: #000000;
+    -fx-background-radius: 20;
+}
+
+
+.task-top-button {
+    -fx-background-radius: 20;
+
+}
