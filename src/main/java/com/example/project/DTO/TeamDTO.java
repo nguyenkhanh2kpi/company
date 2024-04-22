@@ -1,16 +1,22 @@
 package com.example.project.DTO;
 
+import java.sql.Blob;
+
 public class TeamDTO {
     private int id;
-    private int idUser;
-    private int idTeam;
+    private String name;
+    private String description;
+    private int idLeader;
+    private Blob avatar;
 
     public TeamDTO() {}
 
-    public TeamDTO(int id, int idUser, int idTeam) {
+    public TeamDTO(int id, String name, String description, int idLeader, Blob avatar) {
         this.id = id;
-        this.idUser = idUser;
-        this.idTeam = idTeam;
+        this.name = name;
+        this.description = description;
+        this.idLeader = idLeader;
+        this.avatar = avatar;
     }
 
     public int getId() {
@@ -21,19 +27,35 @@ public class TeamDTO {
         this.id = id;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getName() {
+        return name;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getIdTeam() {
-        return idTeam;
+    public String getDescription() {
+        return description;
     }
 
-    public void setIdTeam(int idTeam) {
-        this.idTeam = idTeam;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getIdLeader() {
+        return idLeader;
+    }
+
+    public void setIdLeader(int idLeader) {
+        this.idLeader = idLeader;
+    }
+
+    public Blob getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Blob avatar) {
+        this.avatar = avatar;
     }
 }
