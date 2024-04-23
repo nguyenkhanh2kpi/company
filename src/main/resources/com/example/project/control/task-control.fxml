@@ -102,7 +102,7 @@
                   </Pane>
                   <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onAddTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                        <Button mnemonicParsing="false" onAction="#viewEditTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -120,7 +120,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                        <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#viewEditTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -35,7 +35,7 @@
                         <Font name="Arial" size="15.0" />
                     </font>
                 </Text>
-                <TextField styleClass="content-input" GridPane.columnIndex="1" />
+                <TextField fx:id="usernameTxt" styleClass="content-input" GridPane.columnIndex="1" />
                 <TextField styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="121.43791198730469" GridPane.rowIndex="1">
                     <font>
@@ -77,16 +77,16 @@
                 <TextField styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <TextField styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <ComboBox prefHeight="26.0" prefWidth="242.0" styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <TextField styleClass="content-input" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </children>
         </GridPane>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../static/images/hinh1.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="58.0" layoutY="216.0" mnemonicParsing="false" styleClass="content-button" text="update avatar" />
-      <Button layoutX="272.0" layoutY="443.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="54.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../static/images/hinh1.jpg" />
+            </image>
+        </ImageView>
+        <Button layoutX="58.0" layoutY="216.0" mnemonicParsing="false" styleClass="content-button" text="update avatar" />
+        <Button fx:id="saveProfileButton" layoutX="272.0" layoutY="443.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
 
 
     </children>

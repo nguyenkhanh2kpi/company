@@ -1,7 +1,6 @@
 package com.example.project.core;
 
-import com.example.project.controllers.HomeController;
-import com.example.project.controllers.UserProfileController;
+import com.example.project.controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -21,7 +20,7 @@ public class Routes {
     public void goToLogin() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/login-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 854, 503);
+            Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("Login!");
             stage.setScene(scene);
             stage.show();
@@ -32,37 +31,60 @@ public class Routes {
 
     public void goToHome(Stage prestage, String username) {
         prestage.close();
-        newWindow("/com/example/project/home-view.fxml", 1110, 710, "Home",
+        newWindow("/com/example/project/home-view.fxml"
+                , "Home",
                 (HomeController controller) -> {
                     setup.setUpHomeController(controller, username);
                 });
     }
 
     public void goToUserProfile(String username) {
-        newWindow("/com/example/project/user-profile-view.fxml", 638, 540, "User Profile",
+        newWindow("/com/example/project/user-profile-view.fxml"
+                , "User Profile",
                 (UserProfileController controller) -> {
-                    setup.setUpUserProfileController(controller,username);
+                    setup.setUpUserProfileController(controller, username);
                 });
     }
 
     public void goToProject() {
-        newWindow("/com/example/project/project-view.fxml", 638, 440, "Project", null);
+        newWindow("/com/example/project/project-view.fxml"
+                , "Project", null);
     }
 
     public void goToLeaveRequest() {
-        newWindow("/com/example/project/Leave-view.fxml", 378, 544, "Leave Request", null);
+        newWindow("/com/example/project/Leave-view.fxml",
+                "Leave Request", (LeaveRequestController controller) -> {
+                    setup.setUpLeaveAddController();
+                });
     }
 
     public void goToTask() {
-        newWindow("/com/example/project/task-view.fxml", 918, 540, "Task", null);
+        newWindow("/com/example/project/task-view.fxml",
+                "Task", (AddTaskController controller) -> {
+                    setup.setUpTaskController();
+                });
+    }
+
+    public void viewOrEditTask() {
+        newWindow("/com/example/project/view-update-task-view.fxml",
+                "View or edit task", (ViewOrUpdateTaskController controller) -> {
+                    setup.setUpViewEditTaskController();
+                });
+    }
+
+    public void viewOrEditLeave() {
+        newWindow("/com/example/project/view-update-leave-view.fxml",
+                "View or edit leave", (ViewOrUpdateLeaveController controller) -> {
+                    setup.setUpViewEditLeaveController();
+                });
     }
 
 
-    public <T> void newWindow(String resource, Integer w, Integer h, String title, ControllerSetUp<T> setup) {
+    public <T> void newWindow(String resource, String title, ControllerSetUp<T> setup) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
             Stage newStage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), w, h);
+            Scene scene = new Scene(fxmlLoader.load());
             newStage.setTitle(title);
             newStage.setScene(scene);
             newStage.initModality(Modality.APPLICATION_MODAL);

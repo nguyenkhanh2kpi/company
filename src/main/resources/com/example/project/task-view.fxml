@@ -17,7 +17,7 @@
 
 <!--dung chung css voi leave-->
 
-<AnchorPane prefHeight="540.0" prefWidth="918.0" stylesheets="/static/css/project.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.TaskController">
+<AnchorPane prefHeight="540.0" prefWidth="918.0" stylesheets="/static/css/project.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.AddTaskController">
     <children>
         <GridPane layoutX="65.0" layoutY="51.0" prefHeight="481.0" prefWidth="788.0" style="-fx-hgap: 30;">
             <columnConstraints>

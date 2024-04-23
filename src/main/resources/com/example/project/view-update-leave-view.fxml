@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="660.0" prefWidth="555.0" stylesheets="/static/css/leave.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.ViewOrUpdateLeaveController">
+    <children>
+        <VBox layoutX="22.0" layoutY="14.0" prefHeight="624.0" prefWidth="494.0">
+            <children>
+                <BorderPane prefHeight="38.0" prefWidth="335.0">
+                    <center>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tạo đơn xin nghỉ" wrappingWidth="184.35398864746094" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="Arial" size="24.0" />
+                            </font>
+                        </Text>
+                    </center>
+                    <right>
+                        <ImageView fitHeight="35.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                            <image>
+                                <Image url="@../../../static/images/icons8-edit-128.png" />
+                            </image>
+                        </ImageView>
+                    </right>
+               <bottom>
+                  <Button mnemonicParsing="false" text="Hủy đơn" BorderPane.alignment="CENTER" />
+               </bottom>
+                </BorderPane>
+                <VBox prefHeight="63.0" prefWidth="335.0">
+                    <children>
+                  <VBox prefHeight="63.0" prefWidth="335.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Người viết đơn" wrappingWidth="257.75163650512695">
+                           <font>
+                              <Font name="Arial" size="17.0" />
+                           </font>
+                        </Text>
+                        <DatePicker id="picker" prefHeight="40.0" prefWidth="540.0" promptText="dd/mm/yyyy" styleClass="content-input">
+                           <padding>
+                              <Insets right="15.0" />
+                           </padding>
+                        </DatePicker>
+                     </children>
+                  </VBox>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Người duyệt " wrappingWidth="257.75163650512695">
+                            <font>
+                                <Font name="Arial" size="17.0" />
+                            </font>
+                        </Text>
+                        <DatePicker id="picker" prefHeight="39.0" prefWidth="551.0" promptText="dd/mm/yyyy" styleClass="content-input">
+                            <padding>
+                                <Insets right="15.0" />
+                            </padding>
+                        </DatePicker>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="335.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày viết đơn" wrappingWidth="257.75163650512695">
+                           <font>
+                              <Font name="Arial" size="17.0" />
+                           </font>
+                        </Text>
+                        <DatePicker id="picker" prefHeight="40.0" prefWidth="559.0" promptText="dd/mm/yyyy" styleClass="content-input">
+                           <padding>
+                              <Insets right="15.0" />
+                           </padding>
+                        </DatePicker>
+                     </children>
+                  </VBox>
+                    </children>
+                </VBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nội dung xin nghỉ" wrappingWidth="257.75163650512695">
+                    <font>
+                        <Font name="Arial" size="17.0" />
+                    </font>
+                </Text>
+                <TextArea id="textarea" prefHeight="112.0" prefWidth="494.0" promptText="nhập nội dung xin nghỉ" styleClass="content-input">
+                    <font>
+                        <Font name="Arial" size="17.0" />
+                    </font>
+                </TextArea>
+                <BorderPane prefHeight="42.0" prefWidth="335.0">
+                    <center>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thời gian nghỉ: " wrappingWidth="151.73669052124023" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font name="Arial" size="20.0" />
+                            </font>
+                        </Text>
+                    </center>
+               <right>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10 ngay" wrappingWidth="151.59417724609375" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+               </right>
+                </BorderPane>
+                <BorderPane prefHeight="68.0" prefWidth="335.0">
+                    <center>
+                        <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Apply" BorderPane.alignment="CENTER" />
+                    </center>
+               <top>
+                  <HBox prefHeight="99.0" prefWidth="494.0" BorderPane.alignment="CENTER">
+                     <children>
+                            <VBox prefHeight="117.0" prefWidth="158.0">
+                                <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ" wrappingWidth="257.75163650512695">
+                                        <font>
+                                            <Font name="Arial" size="17.0" />
+                                        </font>
+                                    </Text>
+                                    <DatePicker prefHeight="39.0" prefWidth="209.0" promptText="dd/mm/yyyy" styleClass="content-input">
+                                        <padding>
+                                            <Insets right="15.0" />
+                                        </padding>
+                                    </DatePicker>
+                                  <VBox prefHeight="54.0" prefWidth="335.0">
+                                      <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đến" wrappingWidth="257.75163650512695">
+                                              <font>
+                                                  <Font name="Arial" size="17.0" />
+                                              </font>
+                                          </Text>
+                                          <DatePicker prefHeight="39.0" prefWidth="210.0" promptText="dd/mm/yyyy" styleClass="content-input">
+                                              <padding>
+                                                  <Insets right="15.0" />
+                                              </padding>
+                                          </DatePicker>
+                                      </children>
+                                  </VBox>
+                                </children>
+                            </VBox>
+                        <VBox prefHeight="117.0" prefWidth="265.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trang thai" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duyet don" />
+                              <ComboBox prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </top>
+                </BorderPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

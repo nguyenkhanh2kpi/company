@@ -10,4 +10,8 @@ public class TaskControl {
     public void onAddTask() {
         routes.goToTask();
     }
+
+    public void viewEditTask() {
+        routes.viewOrEditTask();
+    }
 }

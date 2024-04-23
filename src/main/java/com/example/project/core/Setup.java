@@ -16,7 +16,18 @@ public class Setup {
     public void setUpUserProfileController(UserProfileController controller, String username) {
         TextField usernameTxt = controller.getUsernameTxt();
         usernameTxt.setText(username);
+//        controller.setUsernameTxt(usernameTxt);
     }
 
+    public void setUpTaskController() {
 
+    }
+    public void setUpViewEditTaskController() {
+    }
+
+    public void setUpLeaveAddController() {
+    }
+
+    public void setUpViewEditLeaveController() {
+    }
 }

@@ -11,4 +11,8 @@ public class LeaveRequestControl {
         routes.goToLeaveRequest();
     }
 
+    public void onViewClick() {
+        routes.viewOrEditLeave();
+    }
+
 }
