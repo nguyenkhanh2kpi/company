@@ -39,7 +39,7 @@ public class EmployeeDAO {
                 statement.setString(5, user.getEmail());
                 statement.setString(6, user.getPhoneNumber());
                 statement.setString(7, user.getAddress());
-                statement.setBlob(8, user.getAvatar());
+                statement.setString(8, user.getAvatar());
                 statement.setInt(9, user.getIdRole());
                 statement.setInt(10, user.getIdPosition());
 
@@ -75,7 +75,7 @@ public class EmployeeDAO {
                 statement.setString(4, user.getEmail());
                 statement.setString(5, user.getPhoneNumber());
                 statement.setString(6, user.getAddress());
-                statement.setBlob(7, user.getAvatar());
+                statement.setString(7, user.getAvatar());
                 statement.setInt(8, user.getIdRole());
                 statement.setInt(9, user.getIdPosition());
                 statement.setInt(10, user.getId());
@@ -108,7 +108,7 @@ public class EmployeeDAO {
                                 user.setEmail(resultSet.getString(5));
                                 user.setPhoneNumber(resultSet.getString(6));
                                 user.setAddress(resultSet.getString(7));
-                                user.setAvatar(resultSet.getBlob(8));
+                                user.setAvatar(resultSet.getString(8));
                                 user.setIdRole(resultSet.getInt(9));
                                 user.setIdPosition(resultSet.getInt(10));
 
@@ -131,7 +131,7 @@ public class EmployeeDAO {
                                 user.setEmail(resultSet.getString(5));
                                 user.setPhoneNumber(resultSet.getString(6));
                                 user.setAddress(resultSet.getString(7));
-                                user.setAvatar(resultSet.getBlob(8));
+                                user.setAvatar(resultSet.getString(8));
                                 user.setIdRole(resultSet.getInt(9));
                                 user.setIdPosition(resultSet.getInt(10));
 
@@ -154,7 +154,7 @@ public class EmployeeDAO {
                                 user.setEmail(resultSet.getString(5));
                                 user.setPhoneNumber(resultSet.getString(6));
                                 user.setAddress(resultSet.getString(7));
-                                user.setAvatar(resultSet.getBlob(8));
+                                user.setAvatar(resultSet.getString(8));
                                 user.setIdRole(resultSet.getInt(9));
                                 user.setIdPosition(resultSet.getInt(10));
 
@@ -177,7 +177,7 @@ public class EmployeeDAO {
                                 user.setEmail(resultSet.getString(5));
                                 user.setPhoneNumber(resultSet.getString(6));
                                 user.setAddress(resultSet.getString(7));
-                                user.setAvatar(resultSet.getBlob(8));
+                                user.setAvatar(resultSet.getString(8));
                                 user.setIdRole(resultSet.getInt(9));
                                 user.setIdPosition(resultSet.getInt(10));
 
@@ -200,7 +200,7 @@ public class EmployeeDAO {
                                 user.setEmail(resultSet.getString(5));
                                 user.setPhoneNumber(resultSet.getString(6));
                                 user.setAddress(resultSet.getString(7));
-                                user.setAvatar(resultSet.getBlob(8));
+                                user.setAvatar(resultSet.getString(8));
                                 user.setIdRole(resultSet.getInt(9));
                                 user.setIdPosition(resultSet.getInt(10));
 

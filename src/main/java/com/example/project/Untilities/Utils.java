@@ -1,6 +1,7 @@
 package com.example.project.Untilities;
 
 import com.example.project.core.enums.Content;
+import com.example.project.core.enums.Role;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -32,6 +33,18 @@ public class Utils {
         if (children != null) {
             pane.getChildren().add(children);
         }
+    }
+
+    public static Role getRoleFromID(int id) {
+        Role role = null;
+        if (id == 1) {
+            role = Role.Employee;
+        } else if (id == 2) {
+            role = Role.Manager;
+        } else if (id == 3) {
+            role = Role.Admin;
+        }
+        return role;
     }
 
 }

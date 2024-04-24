@@ -1,7 +1,15 @@
 package com.example.project.controllers;
 
-import com.example.project.core.Routes;
 
-public class ProjectController {
+import javafx.fxml.Initializable;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ProjectController implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

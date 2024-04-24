@@ -11,4 +11,5 @@ module com.example.project {
     opens com.example.project.controllers to javafx.fxml;
 // ????
     exports com.example.project.core.control;
+    opens com.example.project.core.control to javafx.fxml;
 }

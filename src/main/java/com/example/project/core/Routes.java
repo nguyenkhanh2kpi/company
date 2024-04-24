@@ -48,7 +48,9 @@ public class Routes {
 
     public void goToProject() {
         newWindow("/com/example/project/project-view.fxml"
-                , "Project", null);
+                , "Project", (ProjectController controller) -> {
+                    setup.setProjectController();
+                });
     }
 
     public void goToLeaveRequest() {
@@ -76,6 +78,13 @@ public class Routes {
         newWindow("/com/example/project/view-update-leave-view.fxml",
                 "View or edit leave", (ViewOrUpdateLeaveController controller) -> {
                     setup.setUpViewEditLeaveController();
+                });
+    }
+
+    public void viewOrEditProject() {
+        newWindow("/com/example/project/view-update-project-view.fxml",
+                "View or edit leave", (ViewOrUpdateProjectController controller) -> {
+                    setup.setUpViewEditProjectController();
                 });
     }
 

@@ -10,13 +10,15 @@ public class UserDTO {
     private String email;
     private String phoneNumber;
     private String address;
-    private  Blob avatar;
+    private  String avatar;
     private int idRole;
     private int idPosition;
 
     public UserDTO() {}
 
-    public UserDTO(int id, String username, String PASSWORD, String fullName, String email, String phoneNumber, String address, Blob avatar, int idRole, int idPosition) {
+
+
+    public UserDTO(int id, String username, String PASSWORD, String fullName, String email, String phoneNumber, String address, String avatar, int idRole, int idPosition) {
         this.id = id;
         this.username = username;
         this.PASSWORD = PASSWORD;
@@ -28,7 +30,13 @@ public class UserDTO {
         this.idRole = idRole;
         this.idPosition = idPosition;
     }
+    public String getAvatar() {
+        return avatar;
+    }
 
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
     public int getId() {
         return id;
     }
@@ -85,13 +93,6 @@ public class UserDTO {
         this.address = address;
     }
 
-    public Blob getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(Blob avatar) {
-        this.avatar = avatar;
-    }
 
     public int getIdRole() {
         return idRole;
@@ -107,5 +108,21 @@ public class UserDTO {
 
     public void setIdPosition(int idPosition) {
         this.idPosition = idPosition;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", PASSWORD='" + PASSWORD + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                ", avatar=" + avatar +
+                ", idRole=" + idRole +
+                ", idPosition=" + idPosition +
+                '}';
     }
 }

@@ -5,7 +5,7 @@ import java.util.*;
 
 public class DBConnection {
     private static final String DEFAULT_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/company_management";
+    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/company";
     private static final String DEFAULT_USERNAME = "root";
     private static final String DEFAULT_PASSWORD = "geniuslynkha";
 

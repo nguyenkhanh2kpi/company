@@ -1,146 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f2f4f5;" styleClass="main-pane" stylesheets="/static/css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.HomeController">
+<AnchorPane prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f2f4f5;" styleClass="main-pane"
+            stylesheets="/static/css/home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.project.controllers.HomeController">
     <children>
         <VBox prefHeight="715.0" prefWidth="200.0" styleClass="left-box">
             <children>
                 <Pane prefHeight="98.0" prefWidth="200.0">
                     <children>
-                        <ImageView fitHeight="93.0" fitWidth="183.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="93.0" fitWidth="183.0" layoutY="3.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/task-logo.png" />
+                                <Image url="@../../../static/images/task-logo.png"/>
                             </image>
                         </ImageView>
                     </children>
                 </Pane>
 
-                <Button mnemonicParsing="false" onAction="#HomeTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Home">
+                <Button mnemonicParsing="false" onAction="#HomeTabClick" prefHeight="42.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Home">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-home-64.png" />
+                                <Image url="@../../../static/images/icons8-home-64.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TaskTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Task">
+                <Button mnemonicParsing="false" onAction="#TaskTabClick" prefHeight="42.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Task">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-task-48.png" />
-                            </image>
-                        </ImageView>
-
-                    </graphic>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#LeaveTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Take Leave">
-                    <graphic>
-                        <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../../static/images/icons8-leave-96.png" />
+                                <Image url="@../../../static/images/icons8-task-48.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#SalaryClick" prefHeight="10.0" prefWidth="200.0" styleClass="tab-left-button" text="Salary">
+                <Button mnemonicParsing="false" onAction="#LeaveTabClick" prefHeight="15.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Take Leave">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-salary-100.png" />
+                                <Image url="@../../../static/images/icons8-leave-96.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TimeTabClick" prefHeight="20.0" prefWidth="200.0" styleClass="tab-left-button" text="Time">
+                <Button mnemonicParsing="false" onAction="#SalaryClick" prefHeight="10.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Salary">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-time-96.png" />
+                                <Image url="@../../../static/images/icons8-salary-100.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#UserClick" prefHeight="21.0" prefWidth="200.0" styleClass="tab-left-button" text="User">
+                <Button mnemonicParsing="false" onAction="#TimeTabClick" prefHeight="20.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Time">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-account-100.png" />
+                                <Image url="@../../../static/images/icons8-time-96.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TeamTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Team">
+                <Button mnemonicParsing="false" onAction="#UserClick" prefHeight="21.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="User">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-teams-128.png" />
+                                <Image url="@../../../static/images/icons8-account-100.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#ProjectTabClick" prefHeight="22.0" prefWidth="200.0" styleClass="tab-left-button" text="Project">
+                <Button mnemonicParsing="false" onAction="#TeamTabClick" prefHeight="15.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Team">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../static/images/icons8-project-96.png" />
+                                <Image url="@../../../static/images/icons8-teams-128.png"/>
                             </image>
                         </ImageView>
 
                     </graphic>
                 </Button>
-                <Pane prefHeight="74.0" prefWidth="200.0" />
-            <Button fx:id="buttonUserName" mnemonicParsing="false" onAction="#ProfileClick" prefHeight="72.0" prefWidth="224.0" style="-fx-background-color: #F8F6E3;" styleClass="tab-left-button" text="username">
-               <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" styleClass="round-image">
-                      <image>
-                          <Image url="@../../../static/images/hinh1.jpg" />
-                      </image>
-                  </ImageView>
-                   <StackPane prefHeight="60.0" prefWidth="62.0">
-                       <ImageView fitHeight="60.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" style="-fx-clip-path: circle(30px);">
-                           <image>
-                               <Image url="@../../../static/images/icons8-avatar-96.png" />
-                           </image>
-                       </ImageView>
-                       <Circle radius="30.0" style="-fx-fill: transparent; -fx-stroke-width: 2px; -fx-stroke: #cccccc;" />
-                   </StackPane>
-               </graphic>
-            </Button>
+                <Button mnemonicParsing="false" onAction="#ProjectTabClick" prefHeight="22.0" prefWidth="200.0"
+                        styleClass="tab-left-button" text="Project">
+                    <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../static/images/icons8-project-96.png"/>
+                            </image>
+                        </ImageView>
+
+                    </graphic>
+                </Button>
+                <Pane prefHeight="74.0" prefWidth="200.0"/>
             </children>
         </VBox>
-        <BorderPane fx:id="contentContainer" layoutX="203.0" layoutY="84.0" prefHeight="618.0" prefWidth="894.0" styleClass="content-pane" />
-        <Pane layoutX="691.0" layoutY="14.0" prefHeight="50.0" prefWidth="388.0" styleClass="top-panel">
-            <children>
-                <TextField id="search-input" layoutX="17.0" layoutY="4.0" prefHeight="43.0" prefWidth="292.0">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </TextField>
-                <Button id="search-button" layoutX="308.0" layoutY="6.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="44.0" />
-                  <ImageView fitHeight="29.0" fitWidth="28.0" layoutX="338.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                          <Image url="@../../../static/images/icons8-search-128.png" />
-                      </image>
-                  </ImageView>
-            </children>
-        </Pane>
+        <BorderPane fx:id="contentContainer" layoutX="203.0" layoutY="90.0" prefHeight="612.0" prefWidth="894.0"
+                    styleClass="content-pane"/>
+        <Button fx:id="buttonUserName" layoutX="858.0" layoutY="10.0" mnemonicParsing="false" onAction="#ProfileClick"
+                prefHeight="55.0" prefWidth="228.0" styleClass="userbutton" text="username"/>
+
+        <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="881.0" layoutY="18.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <clip>
+                <Circle centerX="20.5" centerY="20.5" radius="20.0"/>
+            </clip>
+            <image>
+                <Image url="@../../../static/images/hinh1.jpg"/>
+            </image>
+        </ImageView>
+
 
     </children>
 </AnchorPane>

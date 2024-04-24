@@ -4,21 +4,30 @@ import com.example.project.Untilities.Utils;
 import com.example.project.core.Routes;
 import com.example.project.core.enums.Content;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HomeController {
+public class HomeController implements Initializable {
 
     @FXML
     BorderPane contentContainer;
 
     @FXML
     Button buttonUserName;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            HomeTabClick();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public Button getButtonUserName() {
         return buttonUserName;
@@ -73,7 +82,7 @@ public class HomeController {
     }
 
     public void ProfileClick() {
-        routes.goToUserProfile("asd");
+        routes.goToUserProfile(buttonUserName.getText());
     }
 
 
