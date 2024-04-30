@@ -29,6 +29,7 @@ public class EmployeeDAO {
     //By phone number
     private static final String SEARCH_USER_BY_PHONE = "SELECT * FROM company.users WHERE phoneNumber = ?";
 
+
     public boolean insertUser(UserDTO user) {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(INSERT_USER)) {
@@ -42,7 +43,6 @@ public class EmployeeDAO {
                 statement.setString(8, user.getAvatar());
                 statement.setInt(9, user.getIdRole());
                 statement.setInt(10, user.getIdPosition());
-
                 statement.executeUpdate();
                 return true;
             }
@@ -79,7 +79,6 @@ public class EmployeeDAO {
                 statement.setInt(8, user.getIdRole());
                 statement.setInt(9, user.getIdPosition());
                 statement.setInt(10, user.getId());
-
                 statement.executeUpdate();
                 return true;
             }
@@ -99,7 +98,7 @@ public class EmployeeDAO {
                         statement.setInt(1, id);
 
                         try (ResultSet resultSet = statement.executeQuery()) {
-                            while(resultSet.next()){
+                            while (resultSet.next()) {
                                 UserDTO user = new UserDTO();
                                 user.setId(resultSet.getInt(1));
                                 user.setUsername(resultSet.getString(2));
@@ -122,7 +121,7 @@ public class EmployeeDAO {
                         statement.setString(1, information);
 
                         try (ResultSet resultSet = statement.executeQuery()) {
-                            while(resultSet.next()){
+                            while (resultSet.next()) {
                                 UserDTO user = new UserDTO();
                                 user.setId(resultSet.getInt(1));
                                 user.setUsername(resultSet.getString(2));
@@ -145,7 +144,7 @@ public class EmployeeDAO {
                         statement.setString(1, information);
 
                         try (ResultSet resultSet = statement.executeQuery()) {
-                            while(resultSet.next()){
+                            while (resultSet.next()) {
                                 UserDTO user = new UserDTO();
                                 user.setId(resultSet.getInt(1));
                                 user.setUsername(resultSet.getString(2));
@@ -168,7 +167,7 @@ public class EmployeeDAO {
                         statement.setString(1, information);
 
                         try (ResultSet resultSet = statement.executeQuery()) {
-                            while(resultSet.next()){
+                            while (resultSet.next()) {
                                 UserDTO user = new UserDTO();
                                 user.setId(resultSet.getInt(1));
                                 user.setUsername(resultSet.getString(2));
@@ -191,7 +190,7 @@ public class EmployeeDAO {
                         statement.setString(1, information);
 
                         try (ResultSet resultSet = statement.executeQuery()) {
-                            while(resultSet.next()){
+                            while (resultSet.next()) {
                                 UserDTO user = new UserDTO();
                                 user.setId(resultSet.getInt(1));
                                 user.setUsername(resultSet.getString(2));
@@ -210,6 +209,37 @@ public class EmployeeDAO {
                     }
                     break;
             }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+
+    public List<UserDTO> getAll() {
+
+        List<UserDTO> results = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM company.users;")) {
+
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    while (resultSet.next()) {
+                        UserDTO user = new UserDTO();
+                        user.setId(resultSet.getInt(1));
+                        user.setUsername(resultSet.getString(2));
+                        user.setPASSWORD(resultSet.getString(3));
+                        user.setFullName(resultSet.getString(4));
+                        user.setEmail(resultSet.getString(5));
+                        user.setPhoneNumber(resultSet.getString(6));
+                        user.setAddress(resultSet.getString(7));
+                        user.setAvatar(resultSet.getString(8));
+                        user.setIdRole(resultSet.getInt(9));
+                        user.setIdPosition(resultSet.getInt(10));
+                        results.add(user);
+                    }
+                }
+            }
+
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

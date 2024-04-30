@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -20,16 +21,19 @@
    <children>
       <Pane layoutX="14.0" layoutY="273.0" prefHeight="332.0" prefWidth="876.0" styleClass="time-pane-item">
          <children>
-            <TableView layoutX="14.0" layoutY="66.0" prefHeight="246.0" prefWidth="847.0">
+            <TableView fx:id="timeTable" layoutX="14.0" layoutY="44.0" prefHeight="268.0" prefWidth="847.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn fx:id="idCOl" prefWidth="58.39999008178711" text="Id" />
+                  <TableColumn fx:id="nameCol" prefWidth="171.20001220703125" text="Name" />
+                  <TableColumn fx:id="checkInCol" prefWidth="183.2000274658203" text="CheckIn" />
+                  <TableColumn fx:id="checkOutCol" prefWidth="158.4000244140625" text="CheckOut" />
+                  <TableColumn fx:id="dateCol" prefWidth="139.20001220703125" text="Date" />
+                  <TableColumn fx:id="hourCol" prefWidth="139.20001220703125" text="Total" />
                </columns>
             </TableView>
-            <HBox layoutX="18.0" layoutY="21.0" prefHeight="19.0" prefWidth="839.0">
+            <HBox layoutX="19.0" layoutY="7.0" prefHeight="19.0" prefWidth="839.0">
                <children>
-                  <ComboBox prefHeight="26.0" prefWidth="304.0" styleClass="time-pane-item" />
-                  <Pane prefHeight="27.0" prefWidth="478.0" />
+                  <Pane prefHeight="27.0" prefWidth="810.0" />
                   <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                      <children>
                         <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
@@ -46,6 +50,15 @@
                               <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../static/images/icons8-delete-90.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDownCico" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../static/images/icons8-download-100.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -162,6 +175,18 @@
             <Font size="19.0" />
          </font>
       </Text>
-      <Pane layoutX="14.0" layoutY="155.0" prefHeight="87.0" prefWidth="876.0" styleClass="time-pane-item" />
+      <Pane layoutX="14.0" layoutY="155.0" prefHeight="87.0" prefWidth="876.0" styleClass="time-pane-item">
+         <children>
+            <Button layoutX="362.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkInClick" prefHeight="25.0" prefWidth="163.0" text="CheckIn" />
+            <Button layoutX="541.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkOutClick" prefHeight="25.0" prefWidth="163.0" text="CheckOut" />
+            <Text layoutX="38.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <TextField fx:id="nameTxt" layoutX="38.0" layoutY="39.0" />
+            <Text layoutX="732.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total time" />
+            <DatePicker fx:id="datePic" layoutX="198.0" layoutY="39.0" prefHeight="25.0" prefWidth="138.0" />
+            <Text layoutX="204.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+            <TextField fx:id="totalTxt" layoutX="732.0" layoutY="39.0" prefHeight="25.0" prefWidth="86.0" />
+            <TextField fx:id="checkInTxt" layoutX="364.0" layoutY="39.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="checkOutTxt" layoutX="541.0" layoutY="39.0" prefHeight="25.0" prefWidth="163.0" />
+         </children></Pane>
    </children>
 </Pane>

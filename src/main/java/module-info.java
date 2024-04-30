@@ -4,6 +4,8 @@ module com.example.project {
     requires java.sql;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;
@@ -12,4 +14,7 @@ module com.example.project {
 // ????
     exports com.example.project.core.control;
     opens com.example.project.core.control to javafx.fxml;
+
+    opens com.example.project.DTO to javafx.base;
+
 }

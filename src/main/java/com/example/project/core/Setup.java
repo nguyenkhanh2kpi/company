@@ -1,10 +1,13 @@
 package com.example.project.core;
 
 import com.example.project.DAO.EmployeeDAO;
+import com.example.project.DTO.TeamDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.Utils;
+import com.example.project.controllers.AddTeamController;
 import com.example.project.controllers.HomeController;
 import com.example.project.controllers.UserProfileController;
+import com.example.project.core.control.TeamControl;
 import com.example.project.core.enums.Role;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -12,8 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Setup {
+    private static EmployeeDAO employeeDAO = new EmployeeDAO();
     public void setUpHomeController(HomeController controller, String username) {
         Button button = controller.getButtonUserName();
         button.setText(username);
@@ -74,4 +79,34 @@ public class Setup {
 
     public void setUpViewEditProjectController() {
     }
+
+    private int getLeaderIndex(List<UserDTO> leaders, int idLeader) {
+        for (int i = 0; i < leaders.size(); i++) {
+            if (leaders.get(i).getId() == idLeader) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void setUpAddTeamController(boolean isUpdate, AddTeamController controller, TeamControl control, TeamDTO teamDTO) {
+        List<UserDTO> users = employeeDAO.getAll();
+        List<UserDTO> leaders = users.stream()
+                .filter(userDTO -> userDTO.getIdPosition() == 1)
+                .collect(Collectors.toList());
+
+        controller.setTeamControl(control);
+        controller.getNameTxt().setText("asd");
+        controller.getUpdateText().setText(isUpdate ? "update" : "add");
+        if(isUpdate) {
+            controller.getNameTxt().setText(teamDTO.getName());
+            controller.getLeaderCmb().getSelectionModel().select(getLeaderIndex(leaders, teamDTO.getIdLeader()));
+            controller.getDesTxt().setText(teamDTO.getDescription());
+            controller.setTeamDTO(teamDTO);
+        }
+
+    }
+
+
+
 }

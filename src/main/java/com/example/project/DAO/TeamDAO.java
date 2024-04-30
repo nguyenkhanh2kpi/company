@@ -17,6 +17,7 @@ public class TeamDAO {
 
     //SuaNhom
     private static final String UPDATE_TEAM = "UPDATE company.teams SET name = ?, description = ?, idLeader = ?, avatar = ?";
+    private static final String UPDATE_TEAM1 = "UPDATE teams SET name = ?, description = ?, idLeader = ?, avatar = ? WHERE id = ?";
 
     //XoaNhom
     private static final String DELETE_TEAM = "DELETE FROM company.teams WHERE id = ?";
@@ -67,13 +68,12 @@ public class TeamDAO {
 
     public boolean updateTeam(TeamDTO team) {
         try (Connection connection = new DBConnection().createConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement(UPDATE_TEAM)) {
+            try (PreparedStatement statement = connection.prepareStatement(UPDATE_TEAM1)) {
                 statement.setString(1, team.getName());
                 statement.setString(2, team.getDescription());
                 statement.setInt(3, team.getIdLeader());
                 statement.setBlob(4, team.getAvatar());
                 statement.setInt(5, team.getId());
-
                 statement.executeUpdate();
                 return true;
             }
@@ -175,4 +175,25 @@ public class TeamDAO {
         }
         return results;
     }
+
+    public List<TeamDTO> getAllTeams() {
+        List<TeamDTO> teams = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM teams");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                TeamDTO team = new TeamDTO();
+                team.setId(resultSet.getInt("id"));
+                team.setName(resultSet.getString("name"));
+                team.setDescription(resultSet.getString("description"));
+                team.setIdLeader(resultSet.getInt("idLeader"));
+                team.setAvatar(resultSet.getBlob("avatar"));
+                teams.add(team);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return teams;
+    }
+
 }

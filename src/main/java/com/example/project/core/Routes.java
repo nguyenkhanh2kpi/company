@@ -1,6 +1,8 @@
 package com.example.project.core;
 
+import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
+import com.example.project.core.control.TeamControl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -88,6 +90,12 @@ public class Routes {
                 });
     }
 
+    public void addOrUpdateTeam(boolean isUpdate, TeamControl control, TeamDTO teamDTO) {
+        newWindow("/com/example/project/add-team.fxml",
+                "Team manage", (AddTeamController controller) -> {
+                    setup.setUpAddTeamController(isUpdate, controller,control,teamDTO );
+                });
+    }
 
     public <T> void newWindow(String resource, String title, ControllerSetUp<T> setup) {
         try {

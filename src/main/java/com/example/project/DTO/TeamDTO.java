@@ -58,4 +58,15 @@ public class TeamDTO {
     public void setAvatar(Blob avatar) {
         this.avatar = avatar;
     }
+
+    @Override
+    public String toString() {
+        return "TeamDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", idLeader=" + idLeader +
+                ", avatar=" + avatar +
+                '}';
+    }
 }

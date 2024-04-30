@@ -1,24 +1,38 @@
 package com.example.project.DTO;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class CheckinCheckoutDTO {
     private int id;
     private int idUser;
-    private Date checkinTime;
-    private Date checkoutTime;
+    private LocalDateTime checkinTime;
+    private LocalDateTime checkoutTime;
     private float totalHours;
-    private Date date;
+    private LocalDateTime date;
 
-    public CheckinCheckoutDTO() {}
+    private String fullName;
 
-    public CheckinCheckoutDTO(int id, int idUser, Date checkinTime, Date checkoutTime, float totalHours, Date date) {
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public CheckinCheckoutDTO() {
+    }
+
+    public CheckinCheckoutDTO(int id, int idUser, LocalDateTime checkinTime, LocalDateTime checkoutTime, float totalHours, LocalDateTime date, String fullName) {
         this.id = id;
         this.idUser = idUser;
         this.checkinTime = checkinTime;
         this.checkoutTime = checkoutTime;
         this.totalHours = totalHours;
         this.date = date;
+        this.fullName =fullName;
     }
 
     public int getId() {
@@ -37,19 +51,19 @@ public class CheckinCheckoutDTO {
         this.idUser = idUser;
     }
 
-    public Date getCheckinTime() {
+    public LocalDateTime getCheckinTime() {
         return checkinTime;
     }
 
-    public void setCheckinTime(Date checkinTime) {
+    public void setCheckinTime(LocalDateTime checkinTime) {
         this.checkinTime = checkinTime;
     }
 
-    public Date getCheckoutTime() {
+    public LocalDateTime getCheckoutTime() {
         return checkoutTime;
     }
 
-    public void setCheckoutTime(Date checkoutTime) {
+    public void setCheckoutTime(LocalDateTime checkoutTime) {
         this.checkoutTime = checkoutTime;
     }
 
@@ -61,11 +75,24 @@ public class CheckinCheckoutDTO {
         this.totalHours = totalHours;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "CheckinCheckoutDTO{" +
+                "id=" + id +
+                ", idUser=" + idUser +
+                ", checkinTime=" + checkinTime +
+                ", checkoutTime=" + checkoutTime +
+                ", totalHours=" + totalHours +
+                ", date=" + date +
+                ", fullName='" + fullName + '\'' +
+                '}';
     }
 }

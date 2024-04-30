@@ -74,8 +74,9 @@ public class HomeController implements Initializable {
     }
 
     public void TimeTabClick() throws IOException {
-        Utils.getContent(contentContainer, Content.TIME);
+        Utils.getContent(contentContainer, buttonUserName);
     }
+
 
     public void TeamTabClick() throws IOException {
         Utils.getContent(contentContainer, Content.TEAM);

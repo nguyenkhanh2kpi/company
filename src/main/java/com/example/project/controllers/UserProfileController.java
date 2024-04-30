@@ -3,7 +3,9 @@ package com.example.project.controllers;
 import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
 import com.example.project.DTO.UserDTO;
+import com.example.project.Untilities.CustomToast;
 import com.example.project.core.enums.Role;
+import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,7 +77,7 @@ public class UserProfileController implements Initializable {
     private void handleSaveProfile(ActionEvent actionEvent) {
         EmployeeDAO dao = new EmployeeDAO();
         UserBUS bus = new UserBUS();
-        dao.updateUser(bus.formToDTO(this,userDTO));
+        dao.updateUser(bus.formToDTO(this, userDTO));
     }
 
     private void handleUpdateAvatar(ActionEvent actionEvent) {
@@ -100,11 +102,15 @@ public class UserProfileController implements Initializable {
                 String newImagePath = "/public/images/avatar/" + newFileName;
                 userDTO.setAvatar(newImagePath);
                 imageView.setImage(new Image(newImagePath));
+                CustomToast.toast("Success!", ToastStatus.SUCCESS);
             } catch (IOException | URISyntaxException e) {
+                CustomToast.toast("Some thing wrong!!!", ToastStatus.FAIL);
                 e.printStackTrace();
             }
         }
     }
+
+
 
     public TextField getUsernameTxt() {
         return usernameTxt;
@@ -193,6 +199,7 @@ public class UserProfileController implements Initializable {
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
+
     public UserDTO getUserDTO() {
         return userDTO;
     }
