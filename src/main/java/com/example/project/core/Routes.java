@@ -1,5 +1,6 @@
 package com.example.project.core;
 
+import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
 import com.example.project.core.control.TeamControl;
@@ -55,10 +56,10 @@ public class Routes {
                 });
     }
 
-    public void goToLeaveRequest() {
+    public void goToLeaveRequest(String username) {
         newWindow("/com/example/project/Leave-view.fxml",
                 "Leave Request", (LeaveRequestController controller) -> {
-                    setup.setUpLeaveAddController();
+                    setup.setUpLeaveAddController(controller, username);
                 });
     }
 
@@ -76,10 +77,10 @@ public class Routes {
                 });
     }
 
-    public void viewOrEditLeave() {
+    public void viewOrEditLeave(LeaveRequestDTO leaveRequestDTO,String username) {
         newWindow("/com/example/project/view-update-leave-view.fxml",
                 "View or edit leave", (ViewOrUpdateLeaveController controller) -> {
-                    setup.setUpViewEditLeaveController();
+                    setup.setUpViewEditLeaveController(controller,leaveRequestDTO,username);
                 });
     }
 

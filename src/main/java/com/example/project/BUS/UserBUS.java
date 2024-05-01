@@ -7,6 +7,7 @@ import com.example.project.controllers.UserProfileController;
 import com.example.project.core.control.UserListControl;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserBUS {
 
@@ -56,6 +57,36 @@ public class UserBUS {
             return false;
         }
         return true;
+    }
+
+    public UserDTO getUserFromId(int userID) {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        List<UserDTO> users = employeeDAO.getAll();
+        Optional<UserDTO> userOptional = users.stream()
+                .filter(user -> user.getId() == userID)
+                .findFirst();
+        return userOptional.orElse(null);
+    }
+
+    public UserDTO getUserFromUsername(String username) {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        List<UserDTO> users = employeeDAO.getAll();
+        Optional<UserDTO> userOptional = users.stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findFirst();
+        return userOptional.orElse(null);
+    }
+
+    public int getIDFromUsername(String username) {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        List<UserDTO> users = employeeDAO.getAll();
+        Optional<UserDTO> userOptional = users.stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findFirst();
+        if(userOptional.isPresent()) {
+            return userOptional.get().getId();
+        }
+        return 0;
     }
 
 }

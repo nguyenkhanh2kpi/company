@@ -1,24 +1,26 @@
 package com.example.project.core;
 
 import com.example.project.DAO.EmployeeDAO;
+import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.Utils;
-import com.example.project.controllers.AddTeamController;
-import com.example.project.controllers.HomeController;
-import com.example.project.controllers.UserProfileController;
+import com.example.project.controllers.*;
 import com.example.project.core.control.TeamControl;
+import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.Role;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Setup {
     private static EmployeeDAO employeeDAO = new EmployeeDAO();
+
     public void setUpHomeController(HomeController controller, String username) {
         Button button = controller.getButtonUserName();
         button.setText(username);
@@ -68,10 +70,23 @@ public class Setup {
     public void setUpViewEditTaskController() {
     }
 
-    public void setUpLeaveAddController() {
+    public void setUpLeaveAddController(LeaveRequestController controller, String username) {
+        controller.setUsername(username);
     }
 
-    public void setUpViewEditLeaveController() {
+
+    public void setUpViewEditLeaveController(ViewOrUpdateLeaveController controller, LeaveRequestDTO leaveRequestDTO, String username) {
+        controller.getUserTxt().setText(String.valueOf(leaveRequestDTO.getIdUser()));
+        controller.getContentTxt().setText(leaveRequestDTO.getContent());
+        controller.getDatePic().setValue(leaveRequestDTO.getStartDate().toLocalDate());
+        controller.getFromPic().setValue(leaveRequestDTO.getStartDate().toLocalDate());
+        controller.getToPic().setValue(leaveRequestDTO.getEndDate().toLocalDate());
+        controller.getStatusCmb().setValue(LeaveStatus.valueOf(leaveRequestDTO.getStatus()));
+        int approverId = leaveRequestDTO.getIdApprover();
+        controller.getApproveUsertxt().setText(approverId != 0 ? String.valueOf(approverId) : "");
+        controller.getDayTxt().setText(String.valueOf(leaveRequestDTO.getNumberDay()) + "Day");
+        controller.setLeaveRequestDTO(leaveRequestDTO);
+        controller.setUsername(username);
     }
 
     public void setProjectController() {
@@ -98,7 +113,7 @@ public class Setup {
         controller.setTeamControl(control);
         controller.getNameTxt().setText("asd");
         controller.getUpdateText().setText(isUpdate ? "update" : "add");
-        if(isUpdate) {
+        if (isUpdate) {
             controller.getNameTxt().setText(teamDTO.getName());
             controller.getLeaderCmb().getSelectionModel().select(getLeaderIndex(leaders, teamDTO.getIdLeader()));
             controller.getDesTxt().setText(teamDTO.getDescription());
@@ -106,7 +121,6 @@ public class Setup {
         }
 
     }
-
 
 
 }

@@ -58,7 +58,7 @@ public class HomeController implements Initializable {
     }
 
     public void LeaveTabClick() throws IOException {
-        Utils.getContent(contentContainer, Content.LEAVE);
+        Utils.getContentLeave(contentContainer, buttonUserName.getText());
     }
 
     public void SalaryClick() throws IOException {
@@ -80,6 +80,13 @@ public class HomeController implements Initializable {
 
     public void TeamTabClick() throws IOException {
         Utils.getContent(contentContainer, Content.TEAM);
+    }
+
+    public void logout() {
+        Stage stage = (Stage) buttonUserName.getScene().getWindow();
+        stage.close();
+        Routes routes = new Routes(new Stage());
+        routes.goToLogin();
     }
 
     public void ProfileClick() {

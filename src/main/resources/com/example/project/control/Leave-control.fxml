@@ -20,10 +20,16 @@
     <children>
         <Pane layoutX="14.0" layoutY="158.0" prefHeight="446.0" prefWidth="876.0" styleClass="leave-pane-item">
             <children>
-                <TableView layoutX="14.0" layoutY="66.0" prefHeight="356.0" prefWidth="847.0">
+                <TableView fx:id="leaveTable" layoutX="14.0" layoutY="66.0" prefHeight="356.0" prefWidth="847.0">
                     <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn fx:id="idcol" prefWidth="49.599971771240234" text="id" />
+                        <TableColumn fx:id="usercol" prefWidth="117.59994506835938" text="user" />
+                  <TableColumn fx:id="date" prefWidth="95.20005798339844" text="date" />
+                  <TableColumn fx:id="startDate" prefWidth="93.60003662109375" text="start date" />
+                  <TableColumn fx:id="endDatecol" prefWidth="101.5999755859375" text="endDate" />
+                  <TableColumn fx:id="nodcol" prefWidth="60.79998779296875" text="nod" />
+                  <TableColumn fx:id="statuscol" prefWidth="72.800048828125" text="status" />
+                  <TableColumn fx:id="contentCol" prefWidth="264.00006103515625" text="content" />
                     </columns>
                 </TableView>
             <HBox layoutX="18.0" layoutY="21.0" prefHeight="19.0" prefWidth="839.0">
@@ -68,7 +74,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="147.0" layoutY="10.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                        <Button layoutX="147.0" layoutY="10.0" mnemonicParsing="false" onAction="#onReload" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

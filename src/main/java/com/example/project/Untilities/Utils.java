@@ -1,6 +1,7 @@
 package com.example.project.Untilities;
 
 import com.example.project.controllers.HomeController;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.control.TimeControl;
 import com.example.project.core.enums.Content;
 import com.example.project.core.enums.Position;
@@ -45,6 +46,18 @@ public class Utils {
         Node children = loader.load();
         TimeControl control = loader.getController();
         control.setUserNameButton(usernameButton);
+        pane.getChildren().clear();
+        if (children != null) {
+            pane.getChildren().add(children);
+        }
+    }
+
+    public static void getContentLeave(BorderPane pane, String username) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Utils.class.getResource("/com/example/project/control/Leave-control.fxml"));
+        Node children = loader.load();
+        LeaveRequestControl control = loader.getController();
+        control.setUsername(username);
         pane.getChildren().clear();
         if (children != null) {
             pane.getChildren().add(children);
