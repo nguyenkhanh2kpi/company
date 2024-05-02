@@ -23,7 +23,7 @@
                     </children>
                 </Pane>
 
-                <Button mnemonicParsing="false" onAction="#HomeTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Home">
+                <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#HomeTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Home">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -32,7 +32,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TaskTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Task">
+                <Button fx:id="taskBtn" mnemonicParsing="false" onAction="#TaskTabClick" prefHeight="42.0" prefWidth="200.0" styleClass="tab-left-button" text="Task">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -42,7 +42,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#LeaveTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Take Leave">
+                <Button fx:id="leaveBtn" mnemonicParsing="false" onAction="#LeaveTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Take Leave">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -52,7 +52,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#SalaryClick" prefHeight="10.0" prefWidth="200.0" styleClass="tab-left-button" text="Salary">
+                <Button fx:id="salaryBtn" mnemonicParsing="false" onAction="#SalaryClick" prefHeight="10.0" prefWidth="200.0" styleClass="tab-left-button" text="Salary">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -62,7 +62,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TimeTabClick" prefHeight="20.0" prefWidth="200.0" styleClass="tab-left-button" text="Time">
+                <Button fx:id="timeBtn" mnemonicParsing="false" onAction="#TimeTabClick" prefHeight="20.0" prefWidth="200.0" styleClass="tab-left-button" text="Time">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -72,7 +72,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#UserClick" prefHeight="21.0" prefWidth="200.0" styleClass="tab-left-button" text="User">
+                <Button fx:id="userBtn" mnemonicParsing="false" onAction="#UserClick" prefHeight="21.0" prefWidth="200.0" styleClass="tab-left-button" text="User">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -82,7 +82,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#TeamTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Team">
+                <Button fx:id="teamBtn" mnemonicParsing="false" onAction="#TeamTabClick" prefHeight="15.0" prefWidth="200.0" styleClass="tab-left-button" text="Team">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -92,7 +92,7 @@
 
                     </graphic>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#ProjectTabClick" prefHeight="22.0" prefWidth="200.0" styleClass="tab-left-button" text="Project">
+                <Button fx:id="projectBtn" mnemonicParsing="false" onAction="#ProjectTabClick" prefHeight="22.0" prefWidth="200.0" styleClass="tab-left-button" text="Project">
                     <graphic>
                         <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>

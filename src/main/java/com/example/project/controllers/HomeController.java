@@ -1,5 +1,7 @@
 package com.example.project.controllers;
 
+import com.example.project.BUS.UserBUS;
+import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.Utils;
 import com.example.project.core.Routes;
 import com.example.project.core.enums.Content;
@@ -8,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,8 +23,37 @@ public class HomeController implements Initializable {
     @FXML
     Button buttonUserName;
 
+
+    @FXML
+    private Button homeBtn;
+
+    @FXML
+    private Button leaveBtn;
+
+    @FXML
+    private Button projectBtn;
+
+    @FXML
+    private Button salaryBtn;
+
+    @FXML
+    private Button taskBtn;
+
+    @FXML
+    private Button teamBtn;
+
+    @FXML
+    private Button timeBtn;
+
+    @FXML
+    private Button userBtn;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         try {
             HomeTabClick();
         } catch (IOException e) {
@@ -54,7 +86,7 @@ public class HomeController implements Initializable {
     }
 
     public void ProjectTabClick() throws IOException {
-        Utils.getContent(contentContainer, Content.PROJECT);
+        Utils.getContentProject(contentContainer, buttonUserName.getText());
     }
 
     public void LeaveTabClick() throws IOException {
@@ -66,7 +98,7 @@ public class HomeController implements Initializable {
     }
 
     public void TaskTabClick() throws IOException {
-        Utils.getContent(contentContainer, Content.TASK);
+        Utils.getContentTask(contentContainer, buttonUserName.getText());
     }
 
     public void HomeTabClick() throws IOException {
@@ -93,6 +125,67 @@ public class HomeController implements Initializable {
         routes.goToUserProfile(buttonUserName.getText());
     }
 
+    public Button getHomeBtn() {
+        return homeBtn;
+    }
 
+    public void setHomeBtn(Button homeBtn) {
+        this.homeBtn = homeBtn;
+    }
 
+    public Button getLeaveBtn() {
+        return leaveBtn;
+    }
+
+    public void setLeaveBtn(Button leaveBtn) {
+        this.leaveBtn = leaveBtn;
+    }
+
+    public Button getProjectBtn() {
+        return projectBtn;
+    }
+
+    public void setProjectBtn(Button projectBtn) {
+        this.projectBtn = projectBtn;
+    }
+
+    public Button getSalaryBtn() {
+        return salaryBtn;
+    }
+
+    public void setSalaryBtn(Button salaryBtn) {
+        this.salaryBtn = salaryBtn;
+    }
+
+    public Button getTaskBtn() {
+        return taskBtn;
+    }
+
+    public void setTaskBtn(Button taskBtn) {
+        this.taskBtn = taskBtn;
+    }
+
+    public Button getTeamBtn() {
+        return teamBtn;
+    }
+
+    public void setTeamBtn(Button teamBtn) {
+        this.teamBtn = teamBtn;
+    }
+
+    public Button getTimeBtn() {
+        return timeBtn;
+    }
+
+    public void setTimeBtn(Button timeBtn) {
+        this.timeBtn = timeBtn;
+    }
+
+    public Button getUserBtn() {
+        return userBtn;
+    }
+
+    public void setUserBtn(Button userBtn) {
+        this.userBtn = userBtn;
+    }
 }

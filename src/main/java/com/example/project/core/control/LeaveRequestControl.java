@@ -4,11 +4,13 @@ import com.example.project.DAO.LeaveRequestDAO;
 import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.Untilities.CustomToast;
 import com.example.project.core.Routes;
+import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,6 +49,9 @@ public class LeaveRequestControl implements Initializable {
     @FXML
     private TableView<LeaveRequestDTO> leaveTable;
 
+
+    @FXML
+    ComboBox<LeaveStatus> leaveCmb;
 
     public LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
     public String username;
@@ -90,6 +95,7 @@ public class LeaveRequestControl implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoadData();
+        leaveCmb.setItems(FXCollections.observableArrayList(LeaveStatus.CREATED, LeaveStatus.CANCEL, LeaveStatus.APPROVE, LeaveStatus.REFUSE));
     }
 
     public void onReload() {

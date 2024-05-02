@@ -135,11 +135,7 @@ public class AddTeamController implements Initializable {
 
             }
         }
-
-
     }
-
-
 
     public boolean validate() {
         if (!CustomValidate.validateText(nameTxt.getText())) {
@@ -149,6 +145,9 @@ public class AddTeamController implements Initializable {
         if (!CustomValidate.validateText(desTxt.getText())) {
             CustomAlert.showAlertError("description", "description must not be null");
             return false;
+        }
+        if(leaderCmb.getSelectionModel().getSelectedItem()==null) {
+            CustomAlert.showAlertError("leader", "you haven't choice leader");
         }
         return true;
     }

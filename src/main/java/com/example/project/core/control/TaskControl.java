@@ -8,10 +8,20 @@ public class TaskControl {
     Routes routes = new Routes(new Stage());
 
     public void onAddTask() {
-        routes.goToTask();
+        routes.goToTask(username);
     }
 
     public void viewEditTask() {
         routes.viewOrEditTask();
+    }
+
+    public String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

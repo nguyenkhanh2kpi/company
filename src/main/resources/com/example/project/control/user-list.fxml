@@ -96,7 +96,7 @@
                <children>
                   <Pane prefHeight="27.0" prefWidth="805.0">
                      <children>
-                        <TextField layoutY="1.0" prefHeight="25.0" prefWidth="359.0" styleClass="userListForm" />
+                        <TextField fx:id="searchText" layoutY="1.0" prefHeight="25.0" prefWidth="359.0" styleClass="userListForm" />
                      </children></Pane>
                   <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                      <children>

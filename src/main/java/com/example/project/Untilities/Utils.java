@@ -2,6 +2,8 @@ package com.example.project.Untilities;
 
 import com.example.project.controllers.HomeController;
 import com.example.project.core.control.LeaveRequestControl;
+import com.example.project.core.control.ProjectControl;
+import com.example.project.core.control.TaskControl;
 import com.example.project.core.control.TimeControl;
 import com.example.project.core.enums.Content;
 import com.example.project.core.enums.Position;
@@ -63,6 +65,30 @@ public class Utils {
             pane.getChildren().add(children);
         }
     }
+    public static void getContentProject(BorderPane contentContainer, String text) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Utils.class.getResource("/com/example/project/control/project-control.fxml"));
+        Node children = loader.load();
+        ProjectControl control = loader.getController();
+        control.setUsername(text);
+        contentContainer.getChildren().clear();
+        if (children != null) {
+            contentContainer.getChildren().add(children);
+        }
+    }
+
+    public static void getContentTask(BorderPane contentContainer, String text) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Utils.class.getResource("/com/example/project/control/task-control.fxml"));
+        Node children = loader.load();
+        TaskControl control = loader.getController();
+        control.setUsername(text);
+        contentContainer.getChildren().clear();
+        if (children != null) {
+            contentContainer.getChildren().add(children);
+        }
+    }
+
 
 
     public static Role getRoleFromID(int id) {
@@ -126,6 +152,7 @@ public class Utils {
             return -1;
         }
     }
+
 
 
 }

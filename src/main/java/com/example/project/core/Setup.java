@@ -1,7 +1,9 @@
 package com.example.project.core;
 
+import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
 import com.example.project.DTO.LeaveRequestDTO;
+import com.example.project.DTO.ProjectDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.Utils;
@@ -9,12 +11,12 @@ import com.example.project.controllers.*;
 import com.example.project.core.control.TeamControl;
 import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.Role;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,8 +24,18 @@ public class Setup {
     private static EmployeeDAO employeeDAO = new EmployeeDAO();
 
     public void setUpHomeController(HomeController controller, String username) {
-        Button button = controller.getButtonUserName();
-        button.setText(username);
+        controller.getButtonUserName().setText(username);
+        controller.setUserName(username);
+
+        UserBUS userBUS = new UserBUS();
+        UserDTO user = userBUS.getUserFromUsername(username);
+        if(user.getIdRole()==1) {
+            controller.getProjectBtn().setDisable(true);
+            controller.getTeamBtn().setDisable(true);
+            controller.getUserBtn().setDisable(true);
+            controller.getSalaryBtn().setDisable(true);
+        }
+
     }
 
     public void setUpUserProfileController(UserProfileController controller, String username) {
@@ -63,8 +75,8 @@ public class Setup {
         }
     }
 
-    public void setUpTaskController() {
-
+    public void setUpTaskController(AddTaskController controller, String username) {
+        controller.setUsername(username);
     }
 
     public void setUpViewEditTaskController() {
@@ -89,10 +101,17 @@ public class Setup {
         controller.setUsername(username);
     }
 
-    public void setProjectController() {
+    public void setProjectController(ProjectController controller,String username) {
+        controller.setUsername(username);
     }
 
-    public void setUpViewEditProjectController() {
+    public void setUpViewEditProjectController(ViewOrUpdateProjectController controller, ProjectDTO projectDTO) {
+        controller.setSelected(projectDTO);
+        controller.getNameTxt().setText(projectDTO.getName());
+        controller.getDesTxt().setText(projectDTO.getDescription());
+        controller.getBonusTxt().setText(projectDTO.getBonus().toString());
+        controller.getEndDatePic().setValue(projectDTO.getEndDate().toLocalDate());
+        controller.getStartDatePic().setValue(projectDTO.getStartDate().toLocalDate());
     }
 
     private int getLeaderIndex(List<UserDTO> leaders, int idLeader) {
@@ -111,7 +130,7 @@ public class Setup {
                 .collect(Collectors.toList());
 
         controller.setTeamControl(control);
-        controller.getNameTxt().setText("asd");
+        controller.getNameTxt().setText("");
         controller.getUpdateText().setText(isUpdate ? "update" : "add");
         if (isUpdate) {
             controller.getNameTxt().setText(teamDTO.getName());

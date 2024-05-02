@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="348.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.AddTeamController">
+<AnchorPane prefHeight="410.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.controllers.AddTeamController">
    <children>
-      <GridPane layoutX="70.0" layoutY="22.0" prefHeight="219.0" prefWidth="374.0">
+      <GridPane layoutX="37.0" layoutY="77.0" prefHeight="219.0" prefWidth="441.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.20001220703125" minWidth="10.0" prefWidth="117.4000244140625" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.5999755859375" minWidth="10.0" prefWidth="256.5999755859375" />
@@ -39,7 +39,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <TextField fx:id="nameTxt" prefHeight="30.0" prefWidth="187.0" GridPane.columnIndex="1">
+            <TextField fx:id="nameTxt" prefHeight="31.0" prefWidth="283.0" GridPane.columnIndex="1">
                <font>
                   <Font size="15.0" />
                </font>
@@ -52,8 +52,11 @@
             <ComboBox fx:id="leaderCmb" prefHeight="26.0" prefWidth="263.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button layoutX="270.0" layoutY="272.0" mnemonicParsing="false" onAction="#onLuu" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
-      <Button layoutX="116.0" layoutY="272.0" mnemonicParsing="false" onAction="#onHuy" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: grey;" styleClass="content-button" text="Hủy" />
-      <Text fx:id="updateText" layoutX="259.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add" />
+      <Button layoutX="270.0" layoutY="310.0" mnemonicParsing="false" onAction="#onLuu" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
+      <Button layoutX="118.0" layoutY="310.0" mnemonicParsing="false" onAction="#onHuy" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: grey;" styleClass="content-button" text="Hủy" />
+      <Text fx:id="updateText" layoutX="237.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add">
+         <font>
+            <Font size="23.0" />
+         </font></Text>
    </children>
 </AnchorPane>

@@ -35,7 +35,7 @@
                         <Font name="Arial" size="17.0" />
                      </font>
                   </Text>
-                  <TextField styleClass="content-input" />
+                  <TextField fx:id="projectNametxt" styleClass="content-input" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -45,7 +45,7 @@
                         <Font name="Arial" size="17.0" />
                      </font>
                   </Text>
-                  <ComboBox prefHeight="28.0" prefWidth="242.0" styleClass="content-input" />
+                  <ComboBox fx:id="assignToTxt" prefHeight="28.0" prefWidth="242.0" styleClass="content-input" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 20;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -57,7 +57,7 @@
                               <Font name="Arial" size="17.0" />
                            </font>
                         </Text>
-                        <DatePicker prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
+                        <DatePicker fx:id="startDateTxt" prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
                            <opaqueInsets>
                               <Insets right="20.0" />
                            </opaqueInsets>
@@ -76,7 +76,7 @@
                               <Font name="Arial" size="17.0" />
                            </font>
                         </Text>
-                        <DatePicker prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
+                        <DatePicker fx:id="endDateTxt" prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
                            <padding>
                               <Insets right="10.0" />
                            </padding></DatePicker>
@@ -89,7 +89,7 @@
                               <Font name="Arial" size="17.0" />
                            </font>
                         </Text>
-                        <TextField styleClass="content-input" />
+                        <TextField fx:id="bunusTxt" styleClass="content-input" />
                      </children>
                   </VBox>
                </children>
@@ -101,13 +101,13 @@
                         <Font name="Arial" size="17.0" />
                      </font>
                   </Text>
-                  <TextArea prefHeight="190.0" prefWidth="242.0" style="-fx-padding: 10;" styleClass="content-input" />
+                  <TextArea fx:id="projectDestxt" prefHeight="190.0" prefWidth="242.0" style="-fx-padding: 10;" styleClass="content-input" />
                </children>
             </VBox>
             <HBox prefHeight="56.0" prefWidth="242.0" style="-fx-spacing: 20;" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: grey;" styleClass="content-button" text="Hủy" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
+                  <Button fx:id="huyTxt" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: grey;" styleClass="content-button" text="Hủy" />
+                  <Button fx:id="luuTxt" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
                </children>
             </HBox>
          </children>

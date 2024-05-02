@@ -1,6 +1,6 @@
 package com.example.project.BUS;
 
-import com.example.project.DAO.EmployeeDAO;
+
 import com.example.project.DAO.LeaveRequestDAO;
 import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.UserDTO;
@@ -8,10 +8,9 @@ import com.example.project.Untilities.CustomToast;
 import com.example.project.controllers.LeaveRequestController;
 import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.ToastStatus;
-
 import java.sql.Date;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
+
 
 public class LeaveBUS {
     UserBUS userBUS = new UserBUS();

@@ -1,6 +1,7 @@
 package com.example.project.core;
 
 import com.example.project.DTO.LeaveRequestDTO;
+import com.example.project.DTO.ProjectDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
 import com.example.project.core.control.TeamControl;
@@ -49,10 +50,11 @@ public class Routes {
                 });
     }
 
-    public void goToProject() {
+    public void goToProject(String username) {
+        System.out.println("goti"+ username);
         newWindow("/com/example/project/project-view.fxml"
                 , "Project", (ProjectController controller) -> {
-                    setup.setProjectController();
+                    setup.setProjectController(controller, username);
                 });
     }
 
@@ -63,10 +65,10 @@ public class Routes {
                 });
     }
 
-    public void goToTask() {
+    public void goToTask(String username) {
         newWindow("/com/example/project/task-view.fxml",
                 "Task", (AddTaskController controller) -> {
-                    setup.setUpTaskController();
+                    setup.setUpTaskController(controller, username);
                 });
     }
 
@@ -84,10 +86,10 @@ public class Routes {
                 });
     }
 
-    public void viewOrEditProject() {
+    public void viewOrEditProject(ProjectDTO projectDTO) {
         newWindow("/com/example/project/view-update-project-view.fxml",
                 "View or edit leave", (ViewOrUpdateProjectController controller) -> {
-                    setup.setUpViewEditProjectController();
+                    setup.setUpViewEditProjectController(controller,projectDTO);
                 });
     }
 

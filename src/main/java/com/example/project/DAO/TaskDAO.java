@@ -30,7 +30,9 @@ public class TaskDAO {
     private static final String SEARCH_TASK_BY_TEAM = "SELECT * FROM company.task WHERE idTeam = ?";
     //By project
     private static final String SEARCH_TASK_BY_PROJ = "SELECT * FROM company.task WHERE idProject = ?";
+    private static final String INSERT_TASK1 = "INSERT INTO company.task (idCreator, idAssignee, taskName, description, deadline, progress, idTeam, bonus, idProject) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    // Your insertTask method
     public boolean insertTask(TaskDTO task) {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(INSERT_TASK)) {
@@ -44,7 +46,6 @@ public class TaskDAO {
                 statement.setInt(8, task.getIdTeam());
                 statement.setBigDecimal(9, task.getBonus());
                 statement.setInt(10, task.getIdProject());
-
                 statement.executeUpdate();
                 return true;
             }
@@ -53,7 +54,26 @@ public class TaskDAO {
             return false;
         }
     }
-
+    public boolean insertTask1(TaskDTO task) {
+        try (Connection connection = new DBConnection().createConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement(INSERT_TASK1)) {
+                statement.setInt(1, task.getIdCreator());
+                statement.setInt(2, task.getIdAssignee());
+                statement.setString(3, task.getTaskName());
+                statement.setString(4, task.getDescription());
+                statement.setDate(5, task.getDeadline());
+                statement.setInt(6, task.getProgress());
+                statement.setInt(7, task.getIdTeam());
+                statement.setBigDecimal(8, task.getBonus());
+                statement.setInt(9, task.getIdProject());
+                statement.executeUpdate();
+                return true;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public boolean deleteTask(TaskDTO task) {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(DELETE_TASK)) {

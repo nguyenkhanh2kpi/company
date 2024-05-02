@@ -17,11 +17,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class UserListControl implements Initializable {
     @FXML
@@ -58,6 +61,10 @@ public class UserListControl implements Initializable {
     ComboBox<Position> positionCmb;
     @FXML
     Button saveBtn;
+
+
+    @FXML
+    TextField searchText;
     private List<UserDTO> users;
     private static EmployeeDAO employeeDAO = new EmployeeDAO();
     private static UserBUS userBUS = new UserBUS();
@@ -140,6 +147,24 @@ public class UserListControl implements Initializable {
             }
         });
         dataTable.setOnMouseClicked(event -> handleTableRowClick());
+
+        searchText.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                List<UserDTO> users = employeeDAO.getAll();
+                List<UserDTO>  filterUser =  users.stream().filter(userDTO -> userDTO.getFullName().toLowerCase().contains(searchText.getText())).collect(Collectors.toList());
+
+                if(searchText.getText()!="") {
+                    dataTable.getItems().clear();
+                    SetupDataTable(dataTable);
+                    filterUser.forEach(userDTO -> {
+                        dataTable.getItems().add(userDTO);
+                    });
+                } else {
+                    LoadTable();
+                }
+            }
+        });
     }
 
     public void SetupDataTable(TableView<UserDTO> dataTable) {

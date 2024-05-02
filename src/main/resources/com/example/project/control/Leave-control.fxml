@@ -34,7 +34,7 @@
                 </TableView>
             <HBox layoutX="18.0" layoutY="21.0" prefHeight="19.0" prefWidth="839.0">
                <children>
-                  <ComboBox prefHeight="26.0" prefWidth="304.0" styleClass="leave-pane-item" />
+                  <ComboBox fx:id="leaveCmb" prefHeight="26.0" prefWidth="304.0" styleClass="leave-pane-item" />
                   <Pane prefHeight="27.0" prefWidth="478.0" />
                   <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                      <children>

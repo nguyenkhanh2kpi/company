@@ -29,22 +29,35 @@ public class ProjectDAO {
     //By team
     private static final String SEARCH_PROJ_BY_TEAM = "SELECT * FROM company.project WHERE idTeam = ?";
 
+    private static final String INSERT_PROJ1= "INSERT INTO company.project (idCreator, idAssignee, name, description, startDate, endDate, progress, idTeam, bonus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     public boolean insertProject(ProjectDTO proj) {
         try (Connection connection = new DBConnection().createConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement(INSERT_PROJ)) {
-                statement.setInt(1, proj.getId());
-                statement.setInt(2, proj.getIdCreator());
-                statement.setInt(3, proj.getIdAssignee());
-                statement.setString(4, proj.getName());
-                statement.setString(5, proj.getDescription());
-                statement.setDate(6, proj.getStartDate());
-                statement.setDate(7, proj.getEndDate());
-                statement.setInt(8, proj.getProgress());
-                statement.setInt(9, proj.getIdTeam());
-                statement.setBigDecimal(10, proj.getBonus());
-
+            try (PreparedStatement statement = connection.prepareStatement(INSERT_PROJ1)) {
+//                statement.setInt(1, proj.getId());
+//                statement.setInt(2, proj.getIdCreator());
+//                statement.setInt(3, proj.getIdAssignee());
+//                statement.setString(4, proj.getName());
+//                statement.setString(5, proj.getDescription());
+//                statement.setDate(6, proj.getStartDate());
+//                statement.setDate(7, proj.getEndDate());
+//                statement.setInt(8, proj.getProgress());
+//                statement.setInt(9, proj.getIdTeam());
+//                statement.setBigDecimal(10, proj.getBonus());
+                statement.setInt(1, proj.getIdCreator());
+                statement.setInt(2, proj.getIdAssignee());
+                statement.setString(3, proj.getName());
+                statement.setString(4, proj.getDescription());
+                statement.setDate(5, proj.getStartDate());
+                statement.setDate(6, proj.getEndDate());
+                statement.setInt(7, proj.getProgress());
+                statement.setInt(8, proj.getIdTeam());
+                statement.setBigDecimal(9, proj.getBonus());
                 statement.executeUpdate();
                 return true;
+
+//                statement.executeUpdate();
+//                return true;
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -88,6 +101,35 @@ public class ProjectDAO {
             return false;
         }
     }
+    public List<ProjectDTO> getAllProjects() {
+        List<ProjectDTO> results = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection()) {
+            String query = "SELECT * FROM project";
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    while (resultSet.next()) {
+                        ProjectDTO proj = new ProjectDTO();
+                        proj.setId(resultSet.getInt("id"));
+                        proj.setIdCreator(resultSet.getInt("idCreator"));
+                        proj.setIdAssignee(resultSet.getInt("idAssignee"));
+                        proj.setName(resultSet.getString("name"));
+                        proj.setDescription(resultSet.getString("description"));
+                        proj.setStartDate(resultSet.getDate("startDate"));
+                        proj.setEndDate(resultSet.getDate("endDate"));
+                        proj.setProgress(resultSet.getInt("progress"));
+                        proj.setIdTeam(resultSet.getInt("idTeam"));
+                        proj.setBonus(resultSet.getBigDecimal("bonus"));
+
+                        results.add(proj);
+                    }
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return results;
+    }
+
 
     public List<ProjectDTO> searchProject(String information, int mode) {
         List<ProjectDTO> results = new ArrayList<>();

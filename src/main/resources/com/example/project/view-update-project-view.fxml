@@ -34,7 +34,7 @@
                                 <Font name="Arial" size="17.0" />
                             </font>
                         </Text>
-                        <TextField styleClass="content-input" />
+                        <TextField fx:id="nameTxt" styleClass="content-input" />
                     </children>
                 </VBox>
                 <VBox prefHeight="84.0" prefWidth="242.0" GridPane.columnIndex="1">
@@ -74,7 +74,7 @@
                                         <Font name="Arial" size="17.0" />
                                     </font>
                                 </Text>
-                                <DatePicker prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
+                                <DatePicker fx:id="startDatePic" prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
                                     <opaqueInsets>
                                         <Insets right="20.0" />
                                     </opaqueInsets>
@@ -94,7 +94,7 @@
                                         <Font name="Arial" size="17.0" />
                                     </font>
                                 </Text>
-                                <DatePicker prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
+                                <DatePicker fx:id="endDatePic" prefHeight="26.0" prefWidth="245.0" styleClass="content-input">
                                     <padding>
                                         <Insets right="10.0" />
                                     </padding>
@@ -108,7 +108,7 @@
                                         <Font name="Arial" size="17.0" />
                                     </font>
                                 </Text>
-                                <TextField styleClass="content-input" />
+                                <TextField fx:id="BonusTxt" styleClass="content-input" />
                             </children>
                         </VBox>
                   <VBox layoutX="10.0" layoutY="170.0" prefHeight="30.0" prefWidth="242.0">
@@ -134,7 +134,7 @@
                                 <Font name="Arial" size="17.0" />
                             </font>
                         </Text>
-                        <TextArea prefHeight="190.0" prefWidth="242.0" style="-fx-padding: 10;" styleClass="content-input" />
+                        <TextArea fx:id="desTxt" prefHeight="190.0" prefWidth="242.0" style="-fx-padding: 10;" styleClass="content-input" />
                     </children>
                 </VBox>
                 <HBox prefHeight="56.0" prefWidth="242.0" style="-fx-spacing: 20;" GridPane.rowIndex="2">
