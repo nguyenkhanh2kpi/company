@@ -34,7 +34,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="projectNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
@@ -63,7 +63,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="taskNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
@@ -92,7 +92,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="teamNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
@@ -121,7 +121,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="timeNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
@@ -150,7 +150,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="salaryNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>
@@ -179,7 +179,7 @@
                         <VBox prefHeight="71.0" prefWidth="100.0">
                            <children>
                               <Pane prefHeight="9.0" prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
+                              <Text fx:id="leaveNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="35.831302642822266">
                                  <font>
                                     <Font name="Arial Bold" size="20.0" />
                                  </font>

@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -22,6 +23,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class LeaveRequestControl implements Initializable {
+    @FXML
+    public Text allRequest;
+    @FXML
+    public Text acceptedRequest;
+    @FXML
+    public Text rejectedRequest;
+    @FXML
+    public Text waitingRequest;
+    @FXML
+    public Text canceledRequest;
     @FXML
     private TableColumn<LeaveRequestDTO, Integer> idcol;
 
@@ -80,6 +91,7 @@ public class LeaveRequestControl implements Initializable {
 
     public void LoadData() {
         List<LeaveRequestDTO> requestDTOS = leaveRequestDAO.getAllLeaveRequests();
+        LeaveRequestCounterDisplay(requestDTOS);
         ObservableList<LeaveRequestDTO> data = FXCollections.observableArrayList(requestDTOS);
         leaveTable.setItems(data);
         idcol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -92,6 +104,31 @@ public class LeaveRequestControl implements Initializable {
         statuscol.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
+    public void LeaveRequestCounterDisplay(List<LeaveRequestDTO> data){
+        allRequest.setText(Integer.toString(data.size()));
+        var ref = new Object() {
+            int acceptedCounter = 0;
+            int rejectedCounter = 0;
+            int waitingCounter = 0;
+            int canceledCounter = 0;
+        };
+        data.forEach(LeaveRequestDTO ->{
+            String status = LeaveRequestDTO.getStatus();
+            if(status.contains("Accepted")){
+                ref.acceptedCounter++;
+            } else if (status.contains("Rejected")) {
+                ref.rejectedCounter++;
+            } else if (status.contains("Waiting")) {
+                ref.waitingCounter++;
+            } else if (status.contains("Canceled")) {
+                ref.canceledCounter++;
+            }
+        });
+        acceptedRequest.setText(Integer.toString(ref.acceptedCounter));
+        rejectedRequest.setText(Integer.toString(ref.rejectedCounter));
+        waitingRequest.setText(Integer.toString(ref.waitingCounter));
+        canceledRequest.setText(Integer.toString(ref.canceledCounter));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoadData();
