@@ -84,7 +84,7 @@
                <children>
                   <VBox layoutX="18.0" layoutY="16.0" prefHeight="89.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="97.33673095703125">
+                        <Text fx:id="daysWorking" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="97.33673095703125">
                            <font>
                               <Font name="Arial" size="25.0" />
                            </font>
@@ -106,7 +106,7 @@
                <children>
                   <VBox layoutX="24.0" layoutY="16.0" prefHeight="89.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="97.33673095703125">
+                        <Text fx:id="hoursWorking" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="97.33673095703125">
                            <font>
                               <Font name="Arial" size="25.0" />
                            </font>
@@ -128,7 +128,7 @@
                <children>
                   <VBox layoutX="28.0" layoutY="16.0" prefHeight="89.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="97.33673095703125">
+                        <Text fx:id="hoursOverTime" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="97.33673095703125">
                            <font>
                               <Font name="Arial" size="25.0" />
                            </font>
@@ -150,7 +150,7 @@
                <children>
                   <VBox layoutX="40.0" layoutY="16.0" prefHeight="89.0" prefWidth="100.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="97.33673095703125">
+                        <Text fx:id="hoursQuit" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="97.33673095703125">
                            <font>
                               <Font name="Arial" size="25.0" />
                            </font>
