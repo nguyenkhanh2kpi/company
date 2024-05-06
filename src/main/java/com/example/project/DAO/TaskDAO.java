@@ -110,6 +110,40 @@ public class TaskDAO {
             return false;
         }
     }
+    public List<TaskDTO> getAllTasks() {
+        List<TaskDTO> results = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection()) {
+            String query = "SELECT * FROM task";
+            try (PreparedStatement statement = connection.prepareStatement(query);
+                 ResultSet resultSet = statement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    TaskDTO task = createTaskFromResultSet(resultSet);
+                    results.add(task);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Xử lý lỗi một cách phù hợp
+        }
+        return results;
+    }
+
+    private TaskDTO createTaskFromResultSet(ResultSet resultSet) throws SQLException {
+        TaskDTO task = new TaskDTO();
+        task.setId(resultSet.getInt(1));
+        task.setIdCreator(resultSet.getInt(2));
+        task.setIdAssignee(resultSet.getInt(3));
+        task.setTaskName(resultSet.getString(4));
+        task.setDescription(resultSet.getString(5));
+        task.setDeadline(resultSet.getDate(6));
+        task.setProgress(resultSet.getInt(7));
+        task.setIdTeam(resultSet.getInt(8));
+        task.setBonus(resultSet.getBigDecimal(9));
+        task.setIdProject(resultSet.getInt(10));
+        return task;
+    }
+
+
 
     public List<TaskDTO> searchUser(String information, int mode) {
         List<TaskDTO> results = new ArrayList<>();

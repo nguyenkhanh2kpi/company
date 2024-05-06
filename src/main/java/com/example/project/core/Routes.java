@@ -2,6 +2,7 @@ package com.example.project.core;
 
 import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.ProjectDTO;
+import com.example.project.DTO.TaskDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
 import com.example.project.core.control.ProjectControl;
@@ -72,10 +73,10 @@ public class Routes {
                 });
     }
 
-    public void viewOrEditTask() {
+    public void viewOrEditTask(TaskDTO selectedItem) {
         newWindow("/com/example/project/view-update-task-view.fxml",
                 "View or edit task", (ViewOrUpdateTaskController controller) -> {
-                    setup.setUpViewEditTaskController();
+                    setup.setUpViewEditTaskController(controller, selectedItem);
                 });
     }
 
@@ -115,5 +116,6 @@ public class Routes {
             e.printStackTrace();
         }
     }
+
 
 }

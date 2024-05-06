@@ -10,6 +10,8 @@ import com.example.project.Untilities.CustomToast;
 import com.example.project.Untilities.CustomValidate;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -60,13 +62,23 @@ public class AddTaskController implements Initializable {
     }
 
     public void Load() {
-        EmployeeDAO employeeDAO = new EmployeeDAO();
-        List<UserDTO> users = employeeDAO.getAll();
-        assignedCmb.setItems(FXCollections.observableArrayList(users));
+//        EmployeeDAO employeeDAO = new EmployeeDAO();
+//        List<UserDTO> users = employeeDAO.getAll();
+//        assignedCmb.setItems(FXCollections.observableArrayList(users));
 
         ProjectDAO projectDAO = new ProjectDAO();
         List<ProjectDTO> projectDTOS = projectDAO.getAllProjects();
         projectCmb.setItems(FXCollections.observableArrayList(projectDTOS));
+
+        projectCmb.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                assignedCmb.getItems().clear();
+                ProjectDTO projectDTO = projectCmb.getSelectionModel().getSelectedItem();
+                List<UserDTO> users = taskBus.getMembersByProject(projectDTO);
+                assignedCmb.setItems(FXCollections.observableArrayList(users));
+            }
+        });
     }
 
     public void Save() {

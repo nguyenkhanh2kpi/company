@@ -211,14 +211,17 @@ public class AddTeamController implements Initializable {
 
         dialog.showAndWait().ifPresent(selectedMember -> {
             if (selectedMember != null) {
-                if(teamBUS.deleteMember(AddTeamController.this, selectedMember.getUsername(), teamDTO)) {
-                    Stage stage = (Stage) nameTxt.getScene().getWindow();
-                    stage.close();
-                    CustomToast.toast("update team success", ToastStatus.SUCCESS);
-                } else  {
-                    CustomToast.toast("some thing went wrong", ToastStatus.FAIL);
+                try {
+                    if(teamBUS.deleteMember(AddTeamController.this, selectedMember.getUsername(), teamDTO)) {
+                        Stage stage = (Stage) nameTxt.getScene().getWindow();
+                        stage.close();
+                        CustomToast.toast("update team success", ToastStatus.SUCCESS);
+                    } else  {
+                        CustomToast.toast("some thing went wrong", ToastStatus.FAIL);
+                    }
+                } catch (Exception e) {
+                    CustomToast.toast("Please delete all your member", ToastStatus.FAIL);
                 }
-
             }
         });
     }

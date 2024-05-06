@@ -1,12 +1,10 @@
 package com.example.project.core;
 
+import com.example.project.BUS.ProjectBUS;
 import com.example.project.BUS.TeamBUS;
 import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
-import com.example.project.DTO.LeaveRequestDTO;
-import com.example.project.DTO.ProjectDTO;
-import com.example.project.DTO.TeamDTO;
-import com.example.project.DTO.UserDTO;
+import com.example.project.DTO.*;
 import com.example.project.Untilities.Utils;
 import com.example.project.controllers.*;
 import com.example.project.core.control.ProjectControl;
@@ -23,6 +21,9 @@ import java.util.stream.Collectors;
 
 public class Setup {
     private static EmployeeDAO employeeDAO = new EmployeeDAO();
+
+    public UserBUS userBUS = new UserBUS();
+    public ProjectBUS projectBUS = new ProjectBUS();
 
     public void setUpHomeController(HomeController controller, String username) {
         controller.getButtonUserName().setText(username);
@@ -80,7 +81,16 @@ public class Setup {
         controller.setUsername(username);
     }
 
-    public void setUpViewEditTaskController() {
+    public void setUpViewEditTaskController(ViewOrUpdateTaskController controller, TaskDTO selectedItem) {
+        controller.getTitletxt().setText(selectedItem.getTaskName());
+        controller.getDestxt().setText(selectedItem.getDescription());
+        controller.getBonustxt().setText(selectedItem.getBonus().toString());
+        controller.getAssignesCmb().setValue(userBUS.getUserFromId(selectedItem.getIdAssignee()));
+        controller.getProjectCmb().setValue(projectBUS.getFromId(selectedItem.getIdProject()).get());
+        controller.getDueDatetxt().setValue(selectedItem.getDeadline().toLocalDate());
+        controller.getProcesstxt().setText(String.valueOf(selectedItem.getProgress()));
+        controller.getPersontxt().setText(userBUS.getUserFromId(selectedItem.getIdCreator()).getFullName());
+        controller.setTaskDTO(selectedItem);
     }
 
     public void setUpLeaveAddController(LeaveRequestController controller, String username) {

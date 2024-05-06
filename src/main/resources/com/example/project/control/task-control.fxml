@@ -14,26 +14,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="618.0" prefWidth="894.0" stylesheets="/static/css/control/taskControl.css"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.project.core.control.TaskControl">
+<Pane prefHeight="618.0" prefWidth="894.0" stylesheets="/static/css/control/taskControl.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.core.control.TaskControl">
     <children>
         <Pane layoutX="16.0" layoutY="20.0" prefHeight="152.0" prefWidth="281.0" styleClass="task-pane-item">
             <children>
                 <VBox layoutX="5.0" layoutY="4.0" prefHeight="145.0" prefWidth="271.0">
                     <children>
-                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0"
-                                style="-fx-background-color: #FB6D48;" styleClass="task-top-button" text="TODO">
+                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0" style="-fx-background-color: #FB6D48;" styleClass="task-top-button" text="TODO">
                             <font>
-                                <Font name="Arial" size="32.0"/>
+                                <Font name="Arial" size="32.0" />
                             </font>
                         </Button>
                         <BorderPane prefHeight="66.0" prefWidth="271.0">
                             <center>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20%"
-                                      wrappingWidth="63.783973693847656" BorderPane.alignment="CENTER">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20%" wrappingWidth="63.783973693847656" BorderPane.alignment="CENTER">
                                     <font>
-                                        <Font size="22.0"/>
+                                        <Font size="22.0" />
                                     </font>
                                 </Text>
                             </center>
@@ -46,18 +42,16 @@
             <children>
                 <VBox layoutX="5.0" layoutY="4.0" prefHeight="145.0" prefWidth="271.0">
                     <children>
-                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0"
-                                style="-fx-background-color: #41C9E2;" styleClass="task-top-button" text="IN PROGRESS">
+                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0" style="-fx-background-color: #41C9E2;" styleClass="task-top-button" text="IN PROGRESS">
                             <font>
-                                <Font name="Arial" size="32.0"/>
+                                <Font name="Arial" size="32.0" />
                             </font>
                         </Button>
                         <BorderPane prefHeight="66.0" prefWidth="271.0">
                             <center>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30%"
-                                      wrappingWidth="57.384037017822266" BorderPane.alignment="CENTER">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30%" wrappingWidth="57.384037017822266" BorderPane.alignment="CENTER">
                                     <font>
-                                        <Font size="22.0"/>
+                                        <Font size="22.0" />
                                     </font>
                                 </Text>
                             </center>
@@ -70,18 +64,16 @@
             <children>
                 <VBox layoutX="5.0" layoutY="4.0" prefHeight="145.0" prefWidth="271.0">
                     <children>
-                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0"
-                                style="-fx-background-color: #4CCD99;" styleClass="task-top-button" text="DONE">
+                        <Button id="todo-button-task" mnemonicParsing="false" prefHeight="76.0" prefWidth="271.0" style="-fx-background-color: #4CCD99;" styleClass="task-top-button" text="DONE">
                             <font>
-                                <Font name="Arial" size="32.0"/>
+                                <Font name="Arial" size="32.0" />
                             </font>
                         </Button>
                         <BorderPane prefHeight="66.0" prefWidth="271.0">
                             <center>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50%"
-                                      wrappingWidth="66.98401260375977" BorderPane.alignment="CENTER">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50%" wrappingWidth="66.98401260375977" BorderPane.alignment="CENTER">
                                     <font>
-                                        <Font size="22.0"/>
+                                        <Font size="22.0" />
                                     </font>
                                 </Text>
                             </center>
@@ -94,64 +86,55 @@
             <children>
                 <HBox layoutX="14.0" layoutY="24.0" prefHeight="19.0" prefWidth="839.0">
                     <children>
-                        <ComboBox prefHeight="26.0" prefWidth="127.0" styleClass="content-input">
+                        <ComboBox fx:id="meCmb" prefHeight="26.0" prefWidth="127.0" styleClass="content-input">
                             <HBox.margin>
-                                <Insets right="10.0"/>
+                                <Insets right="10.0" />
                             </HBox.margin>
                         </ComboBox>
-                        <ComboBox prefHeight="26.0" prefWidth="127.0" styleClass="content-input"/>
                         <Pane prefHeight="27.0" prefWidth="430.0">
                             <children>
                                 <Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dự án">
                                     <font>
-                                        <Font name="Arial" size="17.0"/>
+                                        <Font name="Arial" size="17.0" />
                                     </font>
                                 </Text>
-                                <ComboBox layoutX="72.0" layoutY="2.0" prefWidth="150.0" styleClass="content-input"/>
+                                <ComboBox fx:id="projectCmb" layoutX="72.0" layoutY="2.0" prefWidth="150.0" styleClass="content-input" />
                             </children>
                         </Pane>
                         <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#viewEditTask" prefHeight="29.0"
-                                        prefWidth="28.0" styleClass="content-button-icon">
+                                <Button mnemonicParsing="false" onAction="#viewEditTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                                     <graphic>
-                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../static/images/icons8-view-100.png"/>
+                                                <Image url="@../../../../static/images/icons8-view-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddTask"
-                                        prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                                     <graphic>
-                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../static/images/icons8-add-90.png"/>
+                                                <Image url="@../../../../static/images/icons8-add-90.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#viewEditTask"
-                                        prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
+                                <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#viewEditTask" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                                     <graphic>
-                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../static/images/icons8-edit-128.png"/>
+                                                <Image url="@../../../../static/images/icons8-edit-128.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button layoutX="45.0" layoutY="10.0" mnemonicParsing="false" prefHeight="29.0"
-                                        prefWidth="28.0" styleClass="content-button-icon">
+                                <Button fx:id="deleteTask" layoutX="45.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="29.0" prefWidth="28.0" styleClass="content-button-icon">
                                     <graphic>
-                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="21.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../static/images/icons8-delete-90.png"/>
+                                                <Image url="@../../../../static/images/icons8-delete-90.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -160,23 +143,23 @@
                         </HBox>
                     </children>
                 </HBox>
-                <TableView layoutX="14.0" layoutY="63.0" prefHeight="320.0" prefWidth="839.0">
+                <TableView fx:id="taskTable" layoutX="14.0" layoutY="63.0" prefHeight="320.0" prefWidth="848.0">
                     <columns>
-                        <TableColumn prefWidth="111.19997787475586" text="Người tạo"/>
-                        <TableColumn minWidth="0.0" prefWidth="135.2000274658203" text="Tên task"/>
-                        <TableColumn prefWidth="131.20001220703125" text="Dự án"/>
-                        <TableColumn prefWidth="96.79998779296875" text="Deadline"/>
-                        <TableColumn prefWidth="76.79998779296875" text="Tiến độ"/>
-                        <TableColumn prefWidth="142.4000244140625" text="Người được giao"/>
-                        <TableColumn prefWidth="155.199951171875" text="Team được giao"/>
+                  <TableColumn fx:id="idCol" prefWidth="46.39999008178711" text="id" />
+                        <TableColumn fx:id="idCreatorCol" prefWidth="100.0" text="Người tạo" />
+                        <TableColumn fx:id="taskNameCol" minWidth="0.0" prefWidth="174.40003967285156" text="Tên task" />
+                        <TableColumn fx:id="idProjectCol" prefWidth="119.199951171875" text="Dự án" />
+                        <TableColumn fx:id="deadlineCol" prefWidth="93.60003662109375" text="Deadline" />
+                        <TableColumn fx:id="progressCol" prefWidth="60.800048828125" text="Tiến độ" />
+                        <TableColumn fx:id="idAssigneeCol" minWidth="0.0" prefWidth="133.5999755859375" text="Người được giao" />
+                        <TableColumn fx:id="idTeamCol" minWidth="0.0" prefWidth="107.20001220703125" text="Team được giao" />
                     </columns>
                 </TableView>
             </children>
         </Pane>
-        <Text layoutX="16.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task board"
-              wrappingWidth="121.60000610351562">
+        <Text layoutX="16.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Task board" wrappingWidth="121.60000610351562">
             <font>
-                <Font size="18.0"/>
+                <Font size="18.0" />
             </font>
         </Text>
     </children>

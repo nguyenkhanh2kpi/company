@@ -109,4 +109,9 @@ public class ProjectDTO {
     public void setBonus(BigDecimal bonus) {
         this.bonus = bonus;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

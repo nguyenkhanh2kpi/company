@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ProjectBUS {
@@ -50,6 +51,12 @@ public class ProjectBUS {
                 return project.getIdTeam();
             }
         }return -1;
+    }
+
+
+    public Optional<ProjectDTO> getFromId(int id) {
+        List<ProjectDTO> projectDTOS = projectDAO.getAllProjects();
+        return projectDTOS.stream().filter(projectDTO -> projectDTO.getId() == id).findFirst();
     }
 
 
