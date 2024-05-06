@@ -7,11 +7,14 @@ import com.example.project.DTO.TeamDTO;
 import com.example.project.Untilities.CustomAlert;
 import com.example.project.Untilities.CustomToast;
 import com.example.project.Untilities.CustomValidate;
+import com.example.project.core.control.ProjectControl;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -54,6 +57,10 @@ public class ProjectController implements Initializable {
     ProjectBUS projectBUS = new ProjectBUS();
     TeamDAO teamDAO = new TeamDAO();
 
+    public ProjectControl projectControl;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         luuTxt.setOnAction(actionEvent -> onLuu());
@@ -65,6 +72,9 @@ public class ProjectController implements Initializable {
         if(validate()) {
             if(projectBUS.addProject(this, username)) {
                 CustomToast.toast("Success", ToastStatus.SUCCESS);
+                projectControl.loadTable();
+                Stage stage = (Stage) projectNametxt.getScene().getWindow();
+                stage.close();
             } else  {
                 CustomToast.toast("Something went wrong", ToastStatus.FAIL);
             }
@@ -160,5 +170,13 @@ public class ProjectController implements Initializable {
 
     public void setStartDateTxt(DatePicker startDateTxt) {
         this.startDateTxt = startDateTxt;
+    }
+
+    public ProjectControl getProjectControl() {
+        return projectControl;
+    }
+
+    public void setProjectControl(ProjectControl projectControl) {
+        this.projectControl = projectControl;
     }
 }

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -44,25 +45,7 @@
                                 <Font name="Arial" size="17.0" />
                             </font>
                         </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="team1">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <VBox prefHeight="55.0" prefWidth="242.0">
-                     <children>
-                        <Text layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned person" wrappingWidth="142.4349365234375">
-                           <font>
-                              <Font name="Arial" size="17.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="10.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </VBox>
+                  <ComboBox fx:id="teamCmb" prefHeight="39.0" prefWidth="287.0" styleClass="content-input" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 20;" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -140,7 +123,7 @@
                 <HBox prefHeight="56.0" prefWidth="242.0" style="-fx-spacing: 20;" GridPane.rowIndex="2">
                     <children>
                         <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" style="-fx-background-color: grey;" styleClass="content-button" text="Hủy" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onLuu" prefHeight="46.0" prefWidth="112.0" styleClass="content-button" text="Lưu" />
                     </children>
                 </HBox>
             </children>

@@ -4,6 +4,7 @@ import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.ProjectDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
+import com.example.project.core.control.ProjectControl;
 import com.example.project.core.control.TeamControl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,11 +51,10 @@ public class Routes {
                 });
     }
 
-    public void goToProject(String username) {
-        System.out.println("goti"+ username);
+    public void goToProject(String username, ProjectControl projectControl) {
         newWindow("/com/example/project/project-view.fxml"
                 , "Project", (ProjectController controller) -> {
-                    setup.setProjectController(controller, username);
+                    setup.setProjectController(controller, username, projectControl);
                 });
     }
 
@@ -86,10 +86,10 @@ public class Routes {
                 });
     }
 
-    public void viewOrEditProject(ProjectDTO projectDTO) {
+    public void viewOrEditProject(ProjectDTO projectDTO, ProjectControl projectControl) {
         newWindow("/com/example/project/view-update-project-view.fxml",
                 "View or edit leave", (ViewOrUpdateProjectController controller) -> {
-                    setup.setUpViewEditProjectController(controller,projectDTO);
+                    setup.setUpViewEditProjectController(controller,projectDTO,projectControl );
                 });
     }
 

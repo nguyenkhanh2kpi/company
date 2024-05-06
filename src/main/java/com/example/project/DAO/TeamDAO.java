@@ -87,7 +87,6 @@ public class TeamDAO {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(DELETE_TEAM)) {
                 statement.setInt(1, team.getId());
-
                 statement.executeUpdate();
                 return true;
             }
@@ -101,6 +100,20 @@ public class TeamDAO {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(DELETE_TEAM_MEMBER)) {
                 statement.setInt(1, team.getId());
+
+                statement.executeUpdate();
+                return true;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean deleteTeamMember(int userId, int teamId) {
+        try (Connection connection = new DBConnection().createConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("DELETE FROM company.user_team WHERE idUser = ? AND idTeam = ?;")) {
+                statement.setInt(1, userId);
+                statement.setInt(2, teamId);
 
                 statement.executeUpdate();
                 return true;
@@ -188,6 +201,24 @@ public class TeamDAO {
                 team.setDescription(resultSet.getString("description"));
                 team.setIdLeader(resultSet.getInt("idLeader"));
                 team.setAvatar(resultSet.getBlob("avatar"));
+                teams.add(team);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return teams;
+    }
+
+    public List<UserTeamDTO> getAllUserTeams() {
+        List<UserTeamDTO> teams = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM company.user_team;");
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                UserTeamDTO team = new UserTeamDTO();
+                team.setId(resultSet.getInt("id"));
+                team.setIdUser(resultSet.getInt("idUser"));
+                team.setIdTeam(resultSet.getInt("idTeam"));
                 teams.add(team);
             }
         } catch (ClassNotFoundException | SQLException e) {

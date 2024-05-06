@@ -1,5 +1,6 @@
 package com.example.project.core;
 
+import com.example.project.BUS.TeamBUS;
 import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
 import com.example.project.DTO.LeaveRequestDTO;
@@ -8,6 +9,7 @@ import com.example.project.DTO.TeamDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.Utils;
 import com.example.project.controllers.*;
+import com.example.project.core.control.ProjectControl;
 import com.example.project.core.control.TeamControl;
 import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.Role;
@@ -16,7 +18,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -101,17 +102,21 @@ public class Setup {
         controller.setUsername(username);
     }
 
-    public void setProjectController(ProjectController controller,String username) {
+    public void setProjectController(ProjectController controller, String username, ProjectControl projectControl) {
         controller.setUsername(username);
+        controller.setProjectControl(projectControl);
     }
 
-    public void setUpViewEditProjectController(ViewOrUpdateProjectController controller, ProjectDTO projectDTO) {
+    public void setUpViewEditProjectController(ViewOrUpdateProjectController controller, ProjectDTO projectDTO, ProjectControl projectControl) {
+        TeamBUS teamBUS = new TeamBUS();
         controller.setSelected(projectDTO);
         controller.getNameTxt().setText(projectDTO.getName());
         controller.getDesTxt().setText(projectDTO.getDescription());
         controller.getBonusTxt().setText(projectDTO.getBonus().toString());
         controller.getEndDatePic().setValue(projectDTO.getEndDate().toLocalDate());
         controller.getStartDatePic().setValue(projectDTO.getStartDate().toLocalDate());
+        controller.getTeamCmb().setValue(teamBUS.getTeamDTObyId(projectDTO.getIdTeam()));
+        controller.setProjectControl(projectControl);
     }
 
     private int getLeaderIndex(List<UserDTO> leaders, int idLeader) {
@@ -131,14 +136,19 @@ public class Setup {
 
         controller.setTeamControl(control);
         controller.getNameTxt().setText("");
-        controller.getUpdateText().setText(isUpdate ? "update" : "add");
+        controller.getUpdateText().setText(isUpdate ? "Update" : "New a team");
         if (isUpdate) {
             controller.getNameTxt().setText(teamDTO.getName());
             controller.getLeaderCmb().getSelectionModel().select(getLeaderIndex(leaders, teamDTO.getIdLeader()));
             controller.getDesTxt().setText(teamDTO.getDescription());
             controller.setTeamDTO(teamDTO);
         }
+        controller.getNewMem().setDisable(!isUpdate);
+        controller.getNewMem1().setDisable(!isUpdate);
+        if(isUpdate) {
+            controller.setUpListview(controller.getListview());
 
+        }
     }
 
 

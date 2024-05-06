@@ -61,12 +61,6 @@ public class TeamDTO {
 
     @Override
     public String toString() {
-        return "TeamDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", idLeader=" + idLeader +
-                ", avatar=" + avatar +
-                '}';
+        return name;
     }
 }
