@@ -36,7 +36,7 @@
                               <Font size="20.0" />
                            </font>
                         </Text>
-                        <ComboBox fx:id="combobox" layoutX="132.0" layoutY="2.0" prefHeight="25.0" prefWidth="108.0" />
+                        <ComboBox fx:id="combobox" layoutX="132.0" layoutY="2.0" prefHeight="25.0" prefWidth="108.0" styleClass="salary-pane-item" />
                      </children></Pane>
                   <HBox prefHeight="29.0" prefWidth="143.0" style="-fx-spacing: 10;">
                      <children>

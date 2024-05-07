@@ -7,7 +7,9 @@ import com.example.project.DAO.EmployeeDAO;
 import com.example.project.DTO.*;
 import com.example.project.Untilities.Utils;
 import com.example.project.controllers.*;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.control.ProjectControl;
+import com.example.project.core.control.TaskControl;
 import com.example.project.core.control.TeamControl;
 import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.Role;
@@ -31,6 +33,8 @@ public class Setup {
 
         UserBUS userBUS = new UserBUS();
         UserDTO user = userBUS.getUserFromUsername(username);
+        controller.getAvatar().setImage(new Image(user.getAvatar()));
+
         if(user.getIdRole()==1) {
             controller.getProjectBtn().setDisable(true);
             controller.getTeamBtn().setDisable(true);
@@ -38,11 +42,11 @@ public class Setup {
             controller.getSalaryBtn().setDisable(true);
         }
 
+
     }
 
     public void setUpUserProfileController(UserProfileController controller, String username) {
         List<UserDTO> userDTOList = new EmployeeDAO().searchUser(username, 1);
-
         if (!userDTOList.isEmpty()) {
             UserDTO userDTO = userDTOList.get(0);
             controller.setUserDTO(userDTO);
@@ -77,11 +81,12 @@ public class Setup {
         }
     }
 
-    public void setUpTaskController(AddTaskController controller, String username) {
+    public void setUpTaskController(AddTaskController controller, String username, TaskControl control) {
         controller.setUsername(username);
+        controller.setTaskControl(control);
     }
 
-    public void setUpViewEditTaskController(ViewOrUpdateTaskController controller, TaskDTO selectedItem) {
+    public void setUpViewEditTaskController(ViewOrUpdateTaskController controller, TaskDTO selectedItem, TaskControl taskControl) {
         controller.getTitletxt().setText(selectedItem.getTaskName());
         controller.getDestxt().setText(selectedItem.getDescription());
         controller.getBonustxt().setText(selectedItem.getBonus().toString());
@@ -91,14 +96,16 @@ public class Setup {
         controller.getProcesstxt().setText(String.valueOf(selectedItem.getProgress()));
         controller.getPersontxt().setText(userBUS.getUserFromId(selectedItem.getIdCreator()).getFullName());
         controller.setTaskDTO(selectedItem);
+        controller.setTaskControl(taskControl);
     }
 
-    public void setUpLeaveAddController(LeaveRequestController controller, String username) {
+    public void setUpLeaveAddController(LeaveRequestController controller, String username, LeaveRequestControl control) {
         controller.setUsername(username);
+        controller.setControl(control);
     }
 
 
-    public void setUpViewEditLeaveController(ViewOrUpdateLeaveController controller, LeaveRequestDTO leaveRequestDTO, String username) {
+    public void setUpViewEditLeaveController(ViewOrUpdateLeaveController controller, LeaveRequestDTO leaveRequestDTO, String username, LeaveRequestControl control) {
         controller.getUserTxt().setText(String.valueOf(leaveRequestDTO.getIdUser()));
         controller.getContentTxt().setText(leaveRequestDTO.getContent());
         controller.getDatePic().setValue(leaveRequestDTO.getStartDate().toLocalDate());
@@ -107,9 +114,11 @@ public class Setup {
         controller.getStatusCmb().setValue(LeaveStatus.valueOf(leaveRequestDTO.getStatus()));
         int approverId = leaveRequestDTO.getIdApprover();
         controller.getApproveUsertxt().setText(approverId != 0 ? String.valueOf(approverId) : "");
-        controller.getDayTxt().setText(String.valueOf(leaveRequestDTO.getNumberDay()) + "Day");
+        controller.getDayTxt().setText(String.valueOf(leaveRequestDTO.getNumberDay()) + " Day");
         controller.setLeaveRequestDTO(leaveRequestDTO);
         controller.setUsername(username);
+        controller.setControl(control);
+        controller.getApproveUsertxt().setText(userBUS.getUserFromUsername(username).getFullName());
     }
 
     public void setProjectController(ProjectController controller, String username, ProjectControl projectControl) {

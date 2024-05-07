@@ -6,8 +6,11 @@ import com.example.project.DTO.LeaveRequestDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.CustomToast;
 import com.example.project.controllers.LeaveRequestController;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.ToastStatus;
+import javafx.stage.Stage;
+
 import java.sql.Date;
 import java.time.temporal.ChronoUnit;
 
@@ -43,11 +46,13 @@ public class LeaveBUS {
         }
     }
 
-    public void update(LeaveRequestDTO leaveRequestDTO, String username,LeaveStatus status) {
+    public void update(LeaveRequestDTO leaveRequestDTO, String username, LeaveStatus status, LeaveRequestControl control) {
         UserDTO user = userBUS.getUserFromUsername(username);
         leaveRequestDTO.setStatus(status.toString());
+        leaveRequestDTO.setIdApprover(user.getId());
         if(user.getIdRole()==2 || user.getIdRole()==3) {
             if(leaveRequestDAO.updateStatus(leaveRequestDTO)) {
+                control.LoadData();
                 CustomToast.toast("Success ", ToastStatus.SUCCESS);
             } else {
                 CustomToast.toast("Some thing went wrong ", ToastStatus.FAIL);

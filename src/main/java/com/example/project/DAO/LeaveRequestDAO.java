@@ -14,7 +14,7 @@ public class LeaveRequestDAO {
             "VALUES (?, ?, ?, ?, ?, ?, ?);\n";
     private static final String GET_ALL_LEAVE_REQUESTS = "SELECT * FROM company.leaverequest";
     //Status
-    private static final String UPDATE_STATUS = "UPDATE company.leaverequest SET status = ? WHERE id = ?";
+    private static final String UPDATE_STATUS = "UPDATE company.leaverequest SET status = ?,idApprover =? WHERE id = ?";
 
     public boolean request(LeaveRequestDTO lr) {
         try (Connection connection = new DBConnection().createConnection()) {
@@ -39,8 +39,8 @@ public class LeaveRequestDAO {
         try (Connection connection = new DBConnection().createConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(UPDATE_STATUS)) {
                 statement.setString(1, lr.getStatus());
-                statement.setInt(2, lr.getId());
-
+                statement.setInt(2, lr.getIdApprover());
+                statement.setInt(3, lr.getId());
                 statement.executeUpdate();
                 return true;
             }

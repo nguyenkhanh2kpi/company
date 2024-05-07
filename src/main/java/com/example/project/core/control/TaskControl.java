@@ -247,11 +247,11 @@ public class TaskControl implements Initializable {
     }
 
     public void onAddTask() {
-        routes.goToTask(username);
+        routes.goToTask(username,TaskControl.this);
     }
 
     public void viewEditTask() {
-        routes.viewOrEditTask(taskTable.getSelectionModel().getSelectedItem());
+        routes.viewOrEditTask(taskTable.getSelectionModel().getSelectedItem(), TaskControl.this);
     }
 
     public String username;

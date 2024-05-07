@@ -117,7 +117,7 @@
         <BorderPane fx:id="contentContainer" layoutX="203.0" layoutY="90.0" prefHeight="612.0" prefWidth="894.0" styleClass="content-pane" />
         <Button fx:id="buttonUserName" layoutX="858.0" layoutY="10.0" mnemonicParsing="false" onAction="#ProfileClick" prefHeight="55.0" prefWidth="228.0" styleClass="userbutton" text="username" />
 
-        <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="881.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="avatar" fitHeight="41.0" fitWidth="41.0" layoutX="881.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
             <clip>
                 <Circle centerX="20.5" centerY="20.5" radius="20.0" />
             </clip>

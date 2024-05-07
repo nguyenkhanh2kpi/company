@@ -6,6 +6,7 @@ module com.example.project {
     requires org.kordamp.bootstrapfx.core;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
+    requires org.eclipse.angus.mail;
 
     opens com.example.project to javafx.fxml;
     exports com.example.project;

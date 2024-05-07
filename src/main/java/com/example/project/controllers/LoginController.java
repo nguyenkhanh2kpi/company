@@ -8,19 +8,23 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private TextField Username;
 
     @FXML
     private TextField Password;
+
+    @FXML
+    private Label btnForgot;
 
 
     private final LoginService loginService = new LoginService();
@@ -35,4 +39,13 @@ public class LoginController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void onForgot() {
+        Routes routes = new Routes(new Stage());
+        routes.goToReset();
+    }
 }

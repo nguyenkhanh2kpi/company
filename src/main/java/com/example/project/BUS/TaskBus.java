@@ -41,6 +41,7 @@ public class TaskBus {
         taskDTO.setIdProject(controller.getProjectCmb().getSelectionModel().getSelectedItem().getId());
         taskDTO.setDeadline(Date.valueOf(controller.getDueDatetxt().getValue()));
         taskDTO.setIdTeam(projectBUS.getIdTeamFromIDProject(taskDTO.getIdProject()));
+        taskDTO.setProgress(Integer.parseInt(controller.getProcesstxt().getText()));
         BigDecimal bonusDecimal = new BigDecimal(controller.getBonustxt().getText());
         taskDTO.setBonus(bonusDecimal);
         return taskDAO.updateTask(taskDTO);

@@ -8,6 +8,7 @@ import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.CustomAlert;
 import com.example.project.Untilities.CustomToast;
 import com.example.project.Untilities.CustomValidate;
+import com.example.project.core.control.TaskControl;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.List;
@@ -47,6 +49,17 @@ public class AddTaskController implements Initializable {
     private Button save;
 
     TaskBus taskBus = new TaskBus();
+
+    TaskControl taskControl = new TaskControl();
+
+    public TaskControl getTaskControl() {
+        return taskControl;
+    }
+
+    public void setTaskControl(TaskControl taskControl) {
+        this.taskControl = taskControl;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -84,6 +97,9 @@ public class AddTaskController implements Initializable {
     public void Save() {
         if (validate()) {
             if(taskBus.InsertTask(this,username)) {
+                taskControl.loadTable();
+                Stage stage = (Stage) nameTxt.getScene().getWindow();
+                stage.close();
                 CustomToast.toast("Success", ToastStatus.SUCCESS);
             } else {
                 CustomToast.toast("Fail", ToastStatus.FAIL);
@@ -118,6 +134,7 @@ public class AddTaskController implements Initializable {
             CustomAlert.showAlertError("bonus", "bonus must be valid");
             return false;
         }
+
         return true;
     }
 

@@ -3,6 +3,7 @@ package com.example.project.controllers;
 import com.example.project.BUS.LeaveBUS;
 import com.example.project.DAO.LeaveRequestDAO;
 import com.example.project.Untilities.CustomToast;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.enums.ToastStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -35,6 +38,15 @@ public class LeaveRequestController implements Initializable {
 
     public String username;
 
+    LeaveRequestControl control;
+
+    public LeaveRequestControl getControl() {
+        return control;
+    }
+
+    public void setControl(LeaveRequestControl control) {
+        this.control = control;
+    }
 
     @FXML
     private Text usernametxt;
@@ -46,10 +58,13 @@ public class LeaveRequestController implements Initializable {
     }
 
     public void onAdd() {
-        if(validate()) {
-            if(leaveRequestDAO.request(leaveBUS.toDTO(this))) {
-            CustomToast.toast("Success !!", ToastStatus.SUCCESS);
-            } else  {
+        if (validate()) {
+            if (leaveRequestDAO.request(leaveBUS.toDTO(this))) {
+                control.LoadData();
+                Stage stage = (Stage) usernametxt.getScene().getWindow();
+                stage.close();
+                CustomToast.toast("Success !!", ToastStatus.SUCCESS);
+            } else {
                 CustomToast.toast("Some thing went wrong !!", ToastStatus.FAIL);
             }
         }
@@ -65,6 +80,10 @@ public class LeaveRequestController implements Initializable {
         LocalDate toDate = tot.getValue();
         if (fromDate != null && toDate != null && fromDate.isAfter(toDate)) {
             CustomToast.toast("From date cannot be after To date!", ToastStatus.FAIL);
+            return false;
+        }
+        if(fromDate==null || toDate == null) {
+            CustomToast.toast("Date cannot be null!", ToastStatus.FAIL);
             return false;
         }
         return true;

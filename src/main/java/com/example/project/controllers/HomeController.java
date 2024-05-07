@@ -8,6 +8,7 @@ import com.example.project.core.enums.Content;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -48,12 +49,19 @@ public class HomeController implements Initializable {
     @FXML
     private Button userBtn;
 
+    @FXML
+    private ImageView avatar;
 
+    public ImageView getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(ImageView avatar) {
+        this.avatar = avatar;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
         try {
             HomeTabClick();
         } catch (IOException e) {

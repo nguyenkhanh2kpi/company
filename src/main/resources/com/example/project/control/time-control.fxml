@@ -177,16 +177,16 @@
       </Text>
       <Pane layoutX="14.0" layoutY="155.0" prefHeight="87.0" prefWidth="876.0" styleClass="time-pane-item">
          <children>
-            <Button layoutX="362.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkInClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: grey;" text="CheckIn" />
-            <Button layoutX="541.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkOutClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: grey;" text="CheckOut" />
+            <Button layoutX="362.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkInClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: grey;" styleClass="time-pane-item" text="CheckIn" />
+            <Button layoutX="541.0" layoutY="7.0" mnemonicParsing="false" onAction="#checkOutClick" prefHeight="25.0" prefWidth="163.0" style="-fx-background-color: grey;" styleClass="time-pane-item" text="CheckOut" />
             <Text layoutX="38.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-            <TextField fx:id="nameTxt" layoutX="38.0" layoutY="39.0" />
+            <TextField fx:id="nameTxt" layoutX="38.0" layoutY="42.0" styleClass="time-pane-item" />
             <Text layoutX="732.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total time" />
-            <DatePicker fx:id="datePic" layoutX="198.0" layoutY="39.0" prefHeight="25.0" prefWidth="138.0" />
+            <DatePicker fx:id="datePic" layoutX="198.0" layoutY="39.0" prefHeight="25.0" prefWidth="138.0" style="-fx-padding: 4;" styleClass="time-pane-item" />
             <Text layoutX="204.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
-            <TextField fx:id="totalTxt" layoutX="732.0" layoutY="39.0" prefHeight="25.0" prefWidth="86.0" />
-            <TextField fx:id="checkInTxt" layoutX="364.0" layoutY="39.0" prefHeight="25.0" prefWidth="163.0" />
-            <TextField fx:id="checkOutTxt" layoutX="541.0" layoutY="39.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="totalTxt" layoutX="732.0" layoutY="43.0" prefHeight="25.0" prefWidth="86.0" styleClass="time-pane-item" />
+            <TextField fx:id="checkInTxt" layoutX="364.0" layoutY="52.0" prefHeight="25.0" prefWidth="163.0" styleClass="time-pane-item" />
+            <TextField fx:id="checkOutTxt" layoutX="541.0" layoutY="52.0" prefHeight="25.0" prefWidth="163.0" styleClass="time-pane-item" />
          </children></Pane>
    </children>
 </Pane>

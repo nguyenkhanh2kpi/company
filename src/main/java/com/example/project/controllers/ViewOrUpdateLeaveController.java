@@ -2,6 +2,7 @@ package com.example.project.controllers;
 
 import com.example.project.BUS.LeaveBUS;
 import com.example.project.DTO.LeaveRequestDTO;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.enums.LeaveStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,6 +43,16 @@ public class ViewOrUpdateLeaveController implements Initializable {
 
     public LeaveRequestDTO leaveRequestDTO;
 
+    public LeaveRequestControl control;
+
+    public LeaveRequestControl getControl() {
+        return control;
+    }
+
+    public void setControl(LeaveRequestControl control) {
+        this.control = control;
+    }
+
     public String username;
 
     public String getUsername() {
@@ -66,7 +77,8 @@ public class ViewOrUpdateLeaveController implements Initializable {
     public void applyClick() {
         LeaveBUS leaveBUS = new LeaveBUS();
         LeaveStatus selectedStatus = statusCmb.getValue();
-        leaveBUS.update(leaveRequestDTO, username, selectedStatus);
+        leaveBUS.update(leaveRequestDTO, username, selectedStatus, control);
+        control.LoadData();
     }
 
 

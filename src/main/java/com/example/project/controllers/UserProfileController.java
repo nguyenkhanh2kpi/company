@@ -3,7 +3,9 @@ package com.example.project.controllers;
 import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
 import com.example.project.DTO.UserDTO;
+import com.example.project.Untilities.CustomAlert;
 import com.example.project.Untilities.CustomToast;
+import com.example.project.Untilities.CustomValidate;
 import com.example.project.core.enums.Role;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
@@ -77,7 +79,13 @@ public class UserProfileController implements Initializable {
     private void handleSaveProfile(ActionEvent actionEvent) {
         EmployeeDAO dao = new EmployeeDAO();
         UserBUS bus = new UserBUS();
-        dao.updateUser(bus.formToDTO(this, userDTO));
+        if(validate()) {
+            if (dao.updateUser(bus.formToDTO(this, userDTO))) {
+                CustomToast.toast("update success", ToastStatus.SUCCESS);
+            } else {
+                CustomToast.toast("something went wrong", ToastStatus.FAIL);
+            }
+        }
     }
 
     private void handleUpdateAvatar(ActionEvent actionEvent) {
@@ -95,7 +103,6 @@ public class UserProfileController implements Initializable {
                 if (!destinationFolder.exists()) {
                     destinationFolder.mkdirs();
                 }
-
                 String newFileName = "avatar_" + System.currentTimeMillis() + ".jpg";
                 Path destinationFilePath = Paths.get(destinationPath, newFileName);
                 Files.copy(selectedFile.toPath(), destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
@@ -110,6 +117,36 @@ public class UserProfileController implements Initializable {
         }
     }
 
+    public boolean validate() {
+        UserBUS userBUS = new UserBUS();
+        if(!usernameTxt.getText().equals(userDTO.getUsername())) {
+            if (userBUS.isExistUsername(usernameTxt.getText())) {
+                CustomAlert.showAlertError("Username", "username is exist");
+                return false;
+            }
+        }
+        if (!CustomValidate.validateText(usernameTxt.getText())) {
+            CustomAlert.showAlertError("Username", "username must not be null");
+            return false;
+        }
+        if (!CustomValidate.validateText(fullNameTxt.getText())) {
+            CustomAlert.showAlertError("Fullname", "fullname must not be null");
+            return false;
+        }
+        if (!CustomValidate.validateEmail(emailTxt.getText())) {
+            CustomAlert.showAlertError("Email", "email must be valid");
+            return false;
+        }
+        if (!CustomValidate.validateNumber(phoneTxt.getText(), "Phone")) {
+            CustomAlert.showAlertError("Phone", "phone must be valid");
+            return false;
+        }
+        if (!CustomValidate.validateText(AddressTxt.getText())) {
+            CustomAlert.showAlertError("Address", "address must be null");
+            return false;
+        }
+        return true;
+    }
 
 
     public TextField getUsernameTxt() {

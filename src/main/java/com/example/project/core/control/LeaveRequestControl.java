@@ -8,6 +8,8 @@ import com.example.project.core.enums.LeaveStatus;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -21,6 +23,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class LeaveRequestControl implements Initializable {
     @FXML
@@ -69,13 +72,13 @@ public class LeaveRequestControl implements Initializable {
     Routes routes = new Routes(new Stage());
 
     public void onAddClick() {
-        routes.goToLeaveRequest(username);
+        routes.goToLeaveRequest(username, LeaveRequestControl.this);
     }
 
     public void onViewClick() {
         LeaveRequestDTO selectedItem = leaveTable.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            routes.viewOrEditLeave(selectedItem, username);
+            routes.viewOrEditLeave(selectedItem, username,LeaveRequestControl.this);
         } else {
             CustomToast.toast("No item is selected.",ToastStatus.INFO);
         }
@@ -133,6 +136,15 @@ public class LeaveRequestControl implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LoadData();
         leaveCmb.setItems(FXCollections.observableArrayList(LeaveStatus.CREATED, LeaveStatus.CANCEL, LeaveStatus.APPROVE, LeaveStatus.REFUSE));
+        leaveCmb.setOnAction(actionEvent -> {
+            String selectedStatus = leaveCmb.getSelectionModel().getSelectedItem().toString();
+            List<LeaveRequestDTO> requestDTOS = leaveRequestDAO.getAllLeaveRequests().stream()
+                    .filter(leaveRequestDTO -> leaveRequestDTO.getStatus().toString().equals(selectedStatus))
+                    .collect(Collectors.toList());
+            LeaveRequestCounterDisplay(requestDTOS);
+            leaveTable.setItems(FXCollections.observableArrayList(requestDTOS));
+        });
+
     }
 
     public void onReload() {

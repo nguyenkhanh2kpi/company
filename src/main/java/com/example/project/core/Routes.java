@@ -5,7 +5,9 @@ import com.example.project.DTO.ProjectDTO;
 import com.example.project.DTO.TaskDTO;
 import com.example.project.DTO.TeamDTO;
 import com.example.project.controllers.*;
+import com.example.project.core.control.LeaveRequestControl;
 import com.example.project.core.control.ProjectControl;
+import com.example.project.core.control.TaskControl;
 import com.example.project.core.control.TeamControl;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -59,31 +61,31 @@ public class Routes {
                 });
     }
 
-    public void goToLeaveRequest(String username) {
+    public void goToLeaveRequest(String username, LeaveRequestControl control) {
         newWindow("/com/example/project/Leave-view.fxml",
                 "Leave Request", (LeaveRequestController controller) -> {
-                    setup.setUpLeaveAddController(controller, username);
+                    setup.setUpLeaveAddController(controller, username,control);
                 });
     }
 
-    public void goToTask(String username) {
+    public void goToTask(String username, TaskControl taskControl) {
         newWindow("/com/example/project/task-view.fxml",
                 "Task", (AddTaskController controller) -> {
-                    setup.setUpTaskController(controller, username);
+                    setup.setUpTaskController(controller, username,taskControl);
                 });
     }
 
-    public void viewOrEditTask(TaskDTO selectedItem) {
+    public void viewOrEditTask(TaskDTO selectedItem, TaskControl control) {
         newWindow("/com/example/project/view-update-task-view.fxml",
                 "View or edit task", (ViewOrUpdateTaskController controller) -> {
-                    setup.setUpViewEditTaskController(controller, selectedItem);
+                    setup.setUpViewEditTaskController(controller, selectedItem,control);
                 });
     }
 
-    public void viewOrEditLeave(LeaveRequestDTO leaveRequestDTO,String username) {
+    public void viewOrEditLeave(LeaveRequestDTO leaveRequestDTO,String username, LeaveRequestControl control) {
         newWindow("/com/example/project/view-update-leave-view.fxml",
                 "View or edit leave", (ViewOrUpdateLeaveController controller) -> {
-                    setup.setUpViewEditLeaveController(controller,leaveRequestDTO,username);
+                    setup.setUpViewEditLeaveController(controller,leaveRequestDTO,username,control);
                 });
     }
 
@@ -108,7 +110,7 @@ public class Routes {
             Scene scene = new Scene(fxmlLoader.load());
             newStage.setTitle(title);
             newStage.setScene(scene);
-            newStage.initModality(Modality.APPLICATION_MODAL);
+//            newStage.initModality(Modality.APPLICATION_MODAL);
             T controller = fxmlLoader.getController();
             setup.setup(controller);
             newStage.showAndWait();
@@ -118,4 +120,15 @@ public class Routes {
     }
 
 
+    public void goToReset() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/project/forgot-password.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            stage.setTitle("Forgot password!");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

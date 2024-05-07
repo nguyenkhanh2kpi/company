@@ -8,6 +8,7 @@ import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.CustomAlert;
 import com.example.project.Untilities.CustomToast;
 import com.example.project.Untilities.CustomValidate;
+import com.example.project.core.control.TaskControl;
 import com.example.project.core.enums.ToastStatus;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,6 +20,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -57,6 +60,16 @@ public class ViewOrUpdateTaskController implements Initializable {
 
     TaskDTO taskDTO = new TaskDTO();
 
+    TaskControl taskControl = new TaskControl();
+
+    public TaskControl getTaskControl() {
+        return taskControl;
+    }
+
+    public void setTaskControl(TaskControl taskControl) {
+        this.taskControl = taskControl;
+    }
+
     public TaskDTO getTaskDTO() {
         return taskDTO;
     }
@@ -84,6 +97,9 @@ public class ViewOrUpdateTaskController implements Initializable {
     public void onUpdate() {
         if (validate()) {
             if(taskBus.UpdateTask(this,taskDTO)) {
+                Stage stage = (Stage) titletxt.getScene().getWindow();
+                taskControl.loadTable();
+                stage.close();
                 CustomToast.toast("Success", ToastStatus.SUCCESS);
             } else {
                 CustomToast.toast("Fail", ToastStatus.FAIL);
@@ -117,6 +133,10 @@ public class ViewOrUpdateTaskController implements Initializable {
         }
         if (!CustomValidate.validateNumber(bonustxt.getText(),"")) {
             CustomAlert.showAlertError("bonus", "bonus must be valid");
+            return false;
+        }
+        if (!CustomValidate.validateNumber(processtxt.getText(),"")) {
+            CustomAlert.showAlertError("bonus", "process must be valid");
             return false;
         }
         return true;
