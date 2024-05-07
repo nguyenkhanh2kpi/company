@@ -24,11 +24,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.apache.poi.ss.formula.functions.T;
 
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +38,12 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class TaskControl implements Initializable {
+    @FXML
+    public Text todo;
+    @FXML
+    public Text inprogress;
+    @FXML
+    public Text done;
     @FXML
     private TableColumn<TaskDTO, Integer> idCol;
 
@@ -134,6 +142,7 @@ public class TaskControl implements Initializable {
 
     public void loadTable() {
         List<TaskDTO> tasks = taskBus.getAllTask();
+        displayProjectInformation(tasks);
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         idCreatorCol.setCellValueFactory(cellData -> {
             return new SimpleStringProperty(userBUS.getUserFromId(cellData.getValue().getIdCreator()).getFullName());
@@ -168,6 +177,7 @@ public class TaskControl implements Initializable {
             tasks =  tasks.stream().filter(taskDTO -> taskDTO.getIdAssignee() == userBUS.getUserFromUsername(username).getId())
                     .collect(Collectors.toList());
         }
+        displayProjectInformation(tasks);
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         idCreatorCol.setCellValueFactory(cellData -> {
             return new SimpleStringProperty(userBUS.getUserFromId(cellData.getValue().getIdCreator()).getFullName());
@@ -191,6 +201,42 @@ public class TaskControl implements Initializable {
             }
         });
         taskTable.setItems(FXCollections.observableArrayList(tasks));
+    }
+
+    public void displayProjectInformation(List<TaskDTO> data){
+        var ref = new Object(){
+            int todo = 0;
+            int inprogress = 0;
+            int done = 0;
+        };
+        data.forEach(TaskDTO -> {
+            if(TaskDTO.getProgress() == 0){
+                ref.todo++;
+            }
+            else if (TaskDTO.getProgress() == 100){
+                ref.done++;
+            }
+            else {
+                ref.inprogress++;
+            }
+        });
+        int sum = ref.todo + ref.inprogress + ref.done;
+        int todoPercentage = 0;
+        int inprogressPercentage = 0;
+        int donePercentage = 0;
+        if (sum != 0) {
+            todoPercentage = ref.todo / sum * 100;
+
+            if (ref.done != 0) {
+                inprogressPercentage = ref.inprogress / sum * 100;
+            } else {
+                inprogressPercentage = 100 - todoPercentage;
+            }
+            donePercentage = 100 - todoPercentage - inprogressPercentage;
+        }
+        todo.setText(Integer.toString(todoPercentage) + "%");
+        inprogress.setText(Integer.toString(inprogressPercentage) + "%");
+        done.setText(Integer.toString(donePercentage) + "%");
     }
 
     public void loadTable(ProjectDTO projectDTO) {

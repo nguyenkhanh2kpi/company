@@ -18,16 +18,24 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class ProjectControl implements Initializable {
+    @FXML
+    public Text todo;
+    @FXML
+    public Text inProgress;
+    @FXML
+    public Text done;
     Routes routes = new Routes(new Stage());
 
     @FXML
@@ -81,6 +89,7 @@ public class ProjectControl implements Initializable {
     public void loadTable() {
         ProjectDAO projectDAO = new ProjectDAO();
         List<ProjectDTO> projectDTOS = projectDAO.getAllProjects();
+        displayProjectInformation(projectDTOS);
         table.getItems().clear();
         ObservableList<ProjectDTO> data = FXCollections.observableArrayList(projectDTOS);
         table.setItems(data);
@@ -90,6 +99,44 @@ public class ProjectControl implements Initializable {
         endcol.setCellValueFactory(new PropertyValueFactory<>("endDate"));
         descol.setCellValueFactory(new PropertyValueFactory<>("description"));
         progresscol.setCellValueFactory(new PropertyValueFactory<>("progress"));
+    }
+
+    public void displayProjectInformation(List<ProjectDTO> data){
+        var ref = new Object(){
+            int todo = 0;
+            int inprogress = 0;
+            int done = 0;
+        };
+        LocalDate date = LocalDate.now();
+        Date currdate = Date.valueOf(date);
+        data.forEach(projectDTO -> {
+            if(currdate.before(projectDTO.getStartDate())){
+                ref.todo++;
+            }
+            else if (currdate.after(projectDTO.getEndDate())){
+                ref.done++;
+            }
+            else {
+                ref.inprogress++;
+            }
+        });
+        int sum = ref.todo + ref.inprogress + ref.done;
+        int todoPercentage = 0;
+        int inprogressPercentage = 0;
+        int donePercentage = 0;
+        if (sum != 0) {
+            todoPercentage = ref.todo / sum * 100;
+
+            if (ref.done != 0) {
+                inprogressPercentage = ref.inprogress / sum * 100;
+            } else {
+                inprogressPercentage = 100 - todoPercentage;
+            }
+            donePercentage = 100 - todoPercentage - inprogressPercentage;
+        }
+        todo.setText(Integer.toString(todoPercentage) + "%");
+        inProgress.setText(Integer.toString(inprogressPercentage) + "%");
+        done.setText(Integer.toString(donePercentage) + "%");
     }
 
     public void loadTable(ProjectStatus projectStatus) {
@@ -116,7 +163,7 @@ public class ProjectControl implements Initializable {
             case ALL:
                 break;
         }
-
+        displayProjectInformation(projectDTOS);
         table.getItems().clear();
         ObservableList<ProjectDTO> data = FXCollections.observableArrayList(projectDTOS);
         table.setItems(data);

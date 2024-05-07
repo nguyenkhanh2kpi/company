@@ -91,7 +91,7 @@
                   </Button>
                   <BorderPane prefHeight="66.0" prefWidth="271.0">
                      <center>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30%" wrappingWidth="57.384037017822266" BorderPane.alignment="CENTER">
+                        <Text fx:id="inProgress" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="57.384037017822266" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -113,7 +113,7 @@
                   </Button>
                   <BorderPane prefHeight="66.0" prefWidth="271.0">
                      <center>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="50%" wrappingWidth="66.98401260375977" BorderPane.alignment="CENTER">
+                        <Text fx:id="done" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="66.98401260375977" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -135,7 +135,7 @@
                   </Button>
                   <BorderPane prefHeight="66.0" prefWidth="271.0">
                      <center>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20%" wrappingWidth="63.783973693847656" BorderPane.alignment="CENTER">
+                        <Text fx:id="todo" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" wrappingWidth="63.783973693847656" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="22.0" />
                            </font>

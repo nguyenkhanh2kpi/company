@@ -80,15 +80,15 @@
                     <Font name="Arial" size="20.0" />
                 </font>
             </Button>
-      <Text layoutX="143.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+      <Text fx:id="memberNumber" layoutX="143.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font size="26.0" />
          </font></Text>
-      <Text layoutX="438.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+      <Text fx:id="projectNumber" layoutX="438.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font size="26.0" />
          </font></Text>
-      <Text layoutX="733.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+      <Text fx:id="taskNumber" layoutX="733.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font size="26.0" />
          </font></Text>
