@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,13 +23,21 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class TimeControl implements Initializable {
-
+    @FXML
+    public Text daysWorking;
+    @FXML
+    public Text hoursWorking;
+    @FXML
+    public Text hoursOverTime;
+    @FXML
+    public Text hoursQuit;
     @FXML
     TableView timeTable;
     @FXML
@@ -101,11 +110,39 @@ public class TimeControl implements Initializable {
             }
 
             List<UserDTO> userName = employeeDAO.searchUser(Integer.toString(selectedItem.getIdUser()), 0);
+            displayTimeInformation(selectedItem.getIdUser());
             nameTxt.setText(userName.get(0).getFullName());
             checkInTxt.setText(checkinTimeString);
             checkOutTxt.setText(checkoutTimeString);
             totalTxt.setText(Float.toString(selectedItem.getTotalHours()));
         }
+    }
+
+    public void displayTimeInformation(int userID){
+        List<CheckinCheckoutDTO> data = new ArrayList<>();
+        data = checkinCheckoutDAO.getAllCheckinsOfCurrentMonth(userID);
+        var ref = new Object(){
+            int daysWorking = 0;
+            float hoursWorking = 0;
+            float hoursOverTime = 0;
+            float hoursQuit = 0;
+        };
+        data.forEach(row->{
+            float totalHours = row.getTotalHours();
+            if(totalHours != 0){
+                ref.daysWorking++;
+                ref.hoursWorking += totalHours;
+                if(totalHours > 8){
+                    ref.hoursOverTime += totalHours - 8;
+                } else if (totalHours < 8) {
+                    ref.hoursQuit += 8 - totalHours;
+                }
+            }
+        });
+        daysWorking.setText(Integer.toString(ref.daysWorking));
+        hoursWorking.setText(Float.toString(ref.hoursWorking));
+        hoursOverTime.setText(Float.toString(ref.hoursOverTime));
+        hoursQuit.setText(Float.toString(ref.hoursQuit));
     }
 
     public void checkInClick() {

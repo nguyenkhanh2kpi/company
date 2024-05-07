@@ -13,6 +13,13 @@ public class CheckinCheckoutDAO {
     private static final String SELECT_ALL_CHECKINS = "SELECT cc.id, cc.idUser, cc.checkinTime, cc.checkoutTime, cc.totalHours, cc.date, u.fullName\n" +
             "FROM checkin_checkout cc\n" +
             "INNER JOIN users u ON cc.idUser = u.id;";
+
+    private static final String SELECT_ALL_CHECKINS_OF_CURRENT_MONTH = "SELECT cc.id, cc.idUser, cc.checkinTime, cc.checkoutTime, cc.totalHours, cc.date, u.fullName\n" +
+            "FROM checkin_checkout cc\n" +
+            "INNER JOIN users u ON cc.idUser = u.id\n" +
+            "WHERE cc.idUser = ?\n" +
+            "AND MONTH(cc.checkinTime) = MONTH(current_date())\n" +
+            "AND YEAR(cc.checkinTime) = YEAR(current_date());";
     private static final String UPDATE_CHECKOUT_CHECKIN = "UPDATE checkin_checkout SET checkoutTime = ?, totalHours = ? WHERE idUser = ? AND date = ?";
 
     public boolean checkin(CheckinCheckoutDTO cico) {
@@ -71,4 +78,32 @@ public class CheckinCheckoutDAO {
         }
         return checkins;
     }
+
+    public List<CheckinCheckoutDTO> getAllCheckinsOfCurrentMonth(int userID) {
+        List<CheckinCheckoutDTO> checkins = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_CHECKINS_OF_CURRENT_MONTH)) {
+
+            statement.setInt(1, userID);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id");
+                    int idUser = resultSet.getInt("idUser");
+                    Timestamp checkinTime = resultSet.getTimestamp("checkinTime");
+                    Timestamp checkoutTime = resultSet.getTimestamp("checkoutTime");
+                    float totalHours = resultSet.getFloat("totalHours");
+                    Timestamp date = resultSet.getTimestamp("date");
+                    String fullName = resultSet.getString("fullName");
+
+                    CheckinCheckoutDTO cico = new CheckinCheckoutDTO(id, idUser, checkinTime.toLocalDateTime(), checkoutTime != null ? checkoutTime.toLocalDateTime() : null, totalHours, date.toLocalDateTime(), fullName);
+                    checkins.add(cico);
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return checkins;
+    }
+
 }
