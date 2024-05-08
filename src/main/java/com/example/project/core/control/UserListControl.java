@@ -143,7 +143,7 @@ public class UserListControl implements Initializable {
         deleteUserBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                CustomToast.toast("delete!", ToastStatus.SUCCESS);
+                onDelete();
             }
         });
         dataTable.setOnMouseClicked(event -> handleTableRowClick());
@@ -228,6 +228,23 @@ public class UserListControl implements Initializable {
         addressTxt.clear();
     }
 
+    public void onDelete() {
+        try {
+            if(selectedUser!=null) {
+                System.out.println(userBUS.userListControlToDTO(UserListControl.this));
+                if(deleteUser()) {
+                    CustomToast.toast("delete success!", ToastStatus.SUCCESS);
+                    clearTextFields();
+                    LoadTable();
+                }
+            } else {
+                CustomToast.toast("Please select user!", ToastStatus.INFO);
+            }
+        } catch (Exception e) {
+            CustomToast.toast("Some thing went wrong!", ToastStatus.FAIL);
+        }
+    }
+
 
     public boolean addUser() {
         return employeeDAO.insertUser(userBUS.userListControlToDTO(this));
@@ -235,6 +252,10 @@ public class UserListControl implements Initializable {
 
     public boolean updateUser() {
         return employeeDAO.updateUser(userBUS.userListControlToDTO(this,selectedUser));
+    }
+
+    public boolean deleteUser() {
+        return employeeDAO.deleteUser(userBUS.userListControlToDTO(this,selectedUser));
     }
 
     public TextField getUsernameTxt() {
