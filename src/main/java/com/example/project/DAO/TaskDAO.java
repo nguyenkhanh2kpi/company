@@ -145,7 +145,7 @@ public class TaskDAO {
 
 
 
-    public List<TaskDTO> searchUser(String information, int mode) {
+    public List<TaskDTO> searchTask(String information, int mode) {
         List<TaskDTO> results = new ArrayList<>();
         try (Connection connection = new DBConnection().createConnection()) {
             switch (mode) {

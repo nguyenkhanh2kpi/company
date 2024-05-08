@@ -227,4 +227,24 @@ public class TeamDAO {
         return teams;
     }
 
+    public List<UserTeamDTO> getAllUserTeamsByTeamID(int id) {
+        List<UserTeamDTO> teams = new ArrayList<>();
+        try (Connection connection = new DBConnection().createConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM company.user_team WHERE idTeam = ?;")){
+             statement.setInt(1, id);
+             try (ResultSet resultSet = statement.executeQuery()) {
+                 while (resultSet.next()) {
+                     UserTeamDTO team = new UserTeamDTO();
+                     team.setId(resultSet.getInt("id"));
+                     team.setIdUser(resultSet.getInt("idUser"));
+                     team.setIdTeam(resultSet.getInt("idTeam"));
+                     teams.add(team);
+                 }
+             }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return teams;
+    }
+
 }
