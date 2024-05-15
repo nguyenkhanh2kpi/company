@@ -20,12 +20,12 @@ public class EmailSender {
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("nguyenkhanh2kpi@gmail.com", "ckbojxjfaxqtpacz");
+                return new PasswordAuthentication("resume.workon.space@gmail.com", "");
             }
         });
 
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("from@gmail.com"));
+        message.setFrom(new InternetAddress("resume.workon.space@gmail.com"));
         message.setRecipients(
                 Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
         message.setSubject(subject);
@@ -42,5 +42,8 @@ public class EmailSender {
 
         Transport.send(message);
     }
+
+
+
 
 }

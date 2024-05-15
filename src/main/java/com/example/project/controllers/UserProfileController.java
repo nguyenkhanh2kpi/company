@@ -67,6 +67,7 @@ public class UserProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        roleCmb.setDisable(true);
         roleCmb.setItems(FXCollections.observableArrayList(
                 Role.Admin,
                 Role.Manager,

@@ -34,6 +34,7 @@ public class ForgotPasswordController implements Initializable {
             employeeDAO.updateUser(user);
         } catch (Exception e) {
             CustomToast.toast("Something went wrong!!", ToastStatus.FAIL);
+            e.printStackTrace();
         }
     }
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
 import java.math.BigDecimal;
 import java.net.URL;
 import java.util.Date;
@@ -49,6 +50,17 @@ public class SalaryControl implements Initializable {
     @FXML
     private TableColumn<SalaryDTO, String> userc;
 
+    @FXML
+    private TableColumn<SalaryDTO, BigDecimal> allowance;
+    @FXML
+    private TableColumn<SalaryDTO, BigDecimal> tax;
+    @FXML
+    private TableColumn<SalaryDTO, BigDecimal> insurance;
+
+    @FXML
+    private TableColumn<SalaryDTO, BigDecimal> bonus;
+    @FXML
+    private TableColumn<SalaryDTO, Float> leave;
 
     @FXML
     private ComboBox<String> combobox;
@@ -66,10 +78,10 @@ public class SalaryControl implements Initializable {
         String selectedMonthStr = combobox.getValue();
         return Integer.parseInt(selectedMonthStr);
     }
+
     @FXML
     void onAddSalary(ActionEvent event) {
         int selectedMonth = getSelectedMonth();
-        idc.setCellValueFactory(new PropertyValueFactory<>("id"));
         userc.setCellValueFactory(new PropertyValueFactory<>("idUser"));
         bsc.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         fc.setCellValueFactory(new PropertyValueFactory<>("finalSalary"));
@@ -77,7 +89,15 @@ public class SalaryControl implements Initializable {
         hc.setCellValueFactory(new PropertyValueFactory<>("totalHours"));
         otc.setCellValueFactory(new PropertyValueFactory<>("overtimeHours"));
         toc.setCellValueFactory(new PropertyValueFactory<>("toDate"));
+        insurance.setCellValueFactory(new PropertyValueFactory<>("insurance"));
+        tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
+        allowance.setCellValueFactory(new PropertyValueFactory<>("allowance"));
+        leave.setCellValueFactory(new PropertyValueFactory<>("leaveHours"));
+        bonus.setCellValueFactory(new PropertyValueFactory<>("bonus"));
+
+
         List<SalaryDTO> salaryDTOS = salaryBUS.getAllSalary(selectedMonth);
+
         ObservableList<SalaryDTO> data = FXCollections.observableArrayList(salaryDTOS);
         tableview.setItems(data);
     }
@@ -85,12 +105,11 @@ public class SalaryControl implements Initializable {
     @FXML
     void onDown(ActionEvent event) {
         try {
-            ExcelExporter.exportToExcel(tableview,new Stage());
+            ExcelExporter.exportToExcel(tableview, new Stage());
             CustomToast.toast("Success export", ToastStatus.SUCCESS);
         } catch (Exception e) {
             CustomToast.toast("Something went wrong", ToastStatus.FAIL);
         }
-
     }
 
 

@@ -36,6 +36,16 @@ public class SalaryDTO {
         this.toDate = toDate;
     }
 
+    public BigDecimal calculateFinalSalary() {
+        BigDecimal hourlyRate = basicSalary;
+        BigDecimal hourlyPay = BigDecimal.valueOf(totalHours - overtimeHours).multiply(hourlyRate);
+        BigDecimal overtimePay = BigDecimal.valueOf(overtimeHours).multiply(BigDecimal.valueOf(1.5)).multiply(hourlyRate);
+        BigDecimal leavePay = BigDecimal.valueOf(leaveHours).multiply(hourlyRate);
+        BigDecimal totalSalary = hourlyPay.add(overtimePay).add(bonus).add(allowance).subtract(leavePay).subtract(tax).subtract(insurance);
+        return totalSalary;
+    }
+
+
     public int getId() {
         return id;
     }

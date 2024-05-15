@@ -17,14 +17,18 @@
             <children>
                 <TableView fx:id="tableview" layoutX="14.0" layoutY="50.0" prefHeight="489.0" prefWidth="839.0">
                     <columns>
-                        <TableColumn fx:id="idc" prefWidth="44.79995346069336" text="Id" />
                         <TableColumn fx:id="userc" prefWidth="56.0" text="user" />
-                  <TableColumn fx:id="bsc" prefWidth="88.80001831054688" text="bs" />
-                  <TableColumn fx:id="hc" prefWidth="97.59999084472656" text="hour" />
-                  <TableColumn fx:id="otc" prefWidth="84.0" text="over time" />
-                  <TableColumn fx:id="fc" prefWidth="147.20001220703125" text="final" />
-                  <TableColumn fx:id="fromc" prefWidth="167.20001220703125" text="from" />
-                  <TableColumn fx:id="toc" prefWidth="156.79998779296875" text="to" />
+                  <TableColumn fx:id="bsc" prefWidth="69.60000610351562" text="basic" />
+                  <TableColumn fx:id="hc" prefWidth="48.0" text="hour" />
+                  <TableColumn fx:id="otc" prefWidth="66.40003967285156" text="over time" />
+                  <TableColumn fx:id="leave" prefWidth="51.199951171875" text="leave" />
+                  <TableColumn fx:id="bonus" prefWidth="48.800048828125" text="bonus" />
+                  <TableColumn fx:id="allowance" prefWidth="83.20001220703125" text="allowance" />
+                  <TableColumn fx:id="tax" prefWidth="47.199951171875" text="tax" />
+                  <TableColumn fx:id="insurance" prefWidth="81.60003662109375" text="insurance" />
+                  <TableColumn fx:id="fc" prefWidth="106.4000244140625" text="final" />
+                  <TableColumn fx:id="fromc" prefWidth="94.39996337890625" text="from" />
+                  <TableColumn fx:id="toc" prefWidth="76.0" text="to" />
                     </columns>
                 </TableView>
             <HBox layoutX="14.0" layoutY="14.0" prefHeight="19.0" prefWidth="839.0">
