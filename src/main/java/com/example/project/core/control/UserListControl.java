@@ -2,6 +2,8 @@ package com.example.project.core.control;
 
 import com.example.project.BUS.UserBUS;
 import com.example.project.DAO.EmployeeDAO;
+import com.example.project.DAO.SalaryDAO;
+import com.example.project.DTO.SalaryDTO;
 import com.example.project.DTO.UserDTO;
 import com.example.project.Untilities.CustomAlert;
 import com.example.project.Untilities.CustomToast;
@@ -20,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -108,11 +111,13 @@ public class UserListControl implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 try {
                     if(selectedUser!=null) {
-                        System.out.println(userBUS.userListControlToDTO(UserListControl.this));
-                        if(updateUser()) {
-                            CustomToast.toast("update success!", ToastStatus.SUCCESS);
-                            clearTextFields();
-                            LoadTable();
+                        setSalary(selectedUser);
+                        if(validate(selectedUser)) {
+                            if(updateUser()) {
+                                CustomToast.toast("update success!", ToastStatus.SUCCESS);
+                                clearTextFields();
+                                LoadTable();
+                            }
                         }
                     } else {
                         if (validate()) {
@@ -220,6 +225,37 @@ public class UserListControl implements Initializable {
         return true;
     }
 
+    public boolean validate(UserDTO selectedUser) {
+        if (userBUS.isExistUsername(usernameTxt.getText()) && usernameTxt.getText()!=selectedUser.getUsername()) {
+            CustomAlert.showAlertError("Username", "username is exist");
+            return false;
+        }
+        if (!CustomValidate.validateText(usernameTxt.getText())) {
+            CustomAlert.showAlertError("Username", "username must not be null");
+            return false;
+        }
+        if (!CustomValidate.validateText(fullNameTxt.getText())) {
+            CustomAlert.showAlertError("Fullname", "fullname must not be null");
+            return false;
+        }
+        if (!CustomValidate.validateEmail(emailTxt.getText())) {
+            CustomAlert.showAlertError("Email", "email must be valid");
+            return false;
+        }
+        if (!CustomValidate.validateNumber(phoneTxt.getText(), "Phone")) {
+            CustomAlert.showAlertError("Phone", "phone must be valid");
+            return false;
+        }
+        if (!CustomValidate.validateText(addressTxt.getText())) {
+            CustomAlert.showAlertError("Address", "address must be null");
+            return false;
+        }
+        return true;
+    }
+
+
+
+
     private void clearTextFields() {
         usernameTxt.clear();
         fullNameTxt.clear();
@@ -249,6 +285,50 @@ public class UserListControl implements Initializable {
     public boolean addUser() {
         return employeeDAO.insertUser(userBUS.userListControlToDTO(this));
     }
+
+    public void setSalary(UserDTO userDTO) {
+        SalaryDAO salaryDAO = new SalaryDAO();
+        SalaryDTO salaryDTO = new SalaryDTO();
+        salaryDTO.setIdUser(userDTO.getId());
+        SalaryDTO existingSalary = salaryDAO.getSalaryById(userDTO.getId());
+
+        if (existingSalary != null) {
+            return;
+        }
+
+
+
+        switch (userDTO.getIdPosition()) {
+            case 1:
+                salaryDTO.setBasicSalary(BigDecimal.valueOf(100000));
+                salaryDTO.setAllowance(BigDecimal.valueOf(500000.00));
+                salaryDTO.setTax(BigDecimal.valueOf(1500000.00));
+                salaryDTO.setInsurance(BigDecimal.valueOf(700000.00));
+                break;
+            case 2:
+                salaryDTO.setBasicSalary(BigDecimal.valueOf(120000));
+                salaryDTO.setAllowance(BigDecimal.valueOf(600000.00));
+                salaryDTO.setTax(BigDecimal.valueOf(1600000.00));
+                salaryDTO.setInsurance(BigDecimal.valueOf(750000.00));
+                break;
+            case 3:
+                salaryDTO.setBasicSalary(BigDecimal.valueOf(70000));
+                salaryDTO.setAllowance(BigDecimal.valueOf(700000.00));
+                salaryDTO.setTax(BigDecimal.valueOf(1000000.00));
+                salaryDTO.setInsurance(BigDecimal.valueOf(600000.00));
+                break;
+            case 4:
+                salaryDTO.setBasicSalary(BigDecimal.valueOf(160000));
+                salaryDTO.setAllowance(BigDecimal.valueOf(800000.00));
+                salaryDTO.setTax(BigDecimal.valueOf(1800000.00));
+                salaryDTO.setInsurance(BigDecimal.valueOf(850000.00));
+                break;
+            default:
+                break;
+        }
+        salaryDAO.insertSalary(salaryDTO);
+    }
+
 
     public boolean updateUser() {
         return employeeDAO.updateUser(userBUS.userListControlToDTO(this,selectedUser));
