@@ -8,6 +8,9 @@ module com.example.project {
     requires org.apache.poi.ooxml;
     requires org.eclipse.angus.mail;
 
+    requires org.apache.httpcomponents.httpclient;
+
+
     opens com.example.project to javafx.fxml;
     exports com.example.project;
     exports com.example.project.controllers;

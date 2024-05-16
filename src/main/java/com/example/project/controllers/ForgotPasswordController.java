@@ -26,7 +26,7 @@ public class ForgotPasswordController implements Initializable {
     public void send() throws MessagingException {
         try {
             String newPassword = PasswordGenerator.generateRandomPassword(10);
-            EmailSender.sendEmail(emailtxt.getText(),"Reset password email","Your new password is: " + newPassword, "123");
+            EmailSender.sendEmail(emailtxt.getText(),"Reset password email","Your new password is: " + newPassword);
             UserBUS userBUS = new UserBUS();
             var user = userBUS.getUserByEmail(emailtxt.getText());
             user.setPASSWORD(newPassword);
