@@ -1,11 +1,20 @@
 package com.example.project.DTO;
 
+import com.example.project.BUS.UserBUS;
+import com.example.project.DAO.EmployeeDAO;
+
 import java.math.BigDecimal;
 import java.sql.Date;
 
 public class SalaryDTO {
     private int id;
     private int idUser;
+    private String fullName;
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     private BigDecimal basicSalary;
     private float totalHours;
     private float overtimeHours;
@@ -45,6 +54,12 @@ public class SalaryDTO {
         return totalSalary;
     }
 
+    public String getFullName() {
+        UserBUS userBUS = new UserBUS();
+        UserDTO user = userBUS.getUserFromId(idUser);
+        fullName = user.getFullName();
+        return fullName;
+    }
 
     public int getId() {
         return id;
@@ -60,6 +75,7 @@ public class SalaryDTO {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+        getFullName();
     }
 
     public BigDecimal getBasicSalary() {

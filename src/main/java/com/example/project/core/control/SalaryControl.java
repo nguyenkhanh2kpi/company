@@ -82,7 +82,7 @@ public class SalaryControl implements Initializable {
     @FXML
     void onAddSalary(ActionEvent event) {
         int selectedMonth = getSelectedMonth();
-        userc.setCellValueFactory(new PropertyValueFactory<>("idUser"));
+        userc.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         bsc.setCellValueFactory(new PropertyValueFactory<>("basicSalary"));
         fc.setCellValueFactory(new PropertyValueFactory<>("finalSalary"));
         fromc.setCellValueFactory(new PropertyValueFactory<>("fromDate"));
@@ -97,7 +97,6 @@ public class SalaryControl implements Initializable {
 
 
         List<SalaryDTO> salaryDTOS = salaryBUS.getAllSalary(selectedMonth);
-
         ObservableList<SalaryDTO> data = FXCollections.observableArrayList(salaryDTOS);
         tableview.setItems(data);
     }
